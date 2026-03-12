@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspria Fitness | ასპრია ფიტნესი</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0A0A0F;--dark:#111118;--card:#1A1A24;--blue:#0066FF;--blue-glow:rgba(0,102,255,0.15);--cyan:#00D4FF;--white:#F0F0F5;--muted:#6B6B80;}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--blue);color:white;padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(10,10,15,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-size:1.5rem;font-weight:900;color:var(--blue);text-decoration:none;letter-spacing:1px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--white);font-size:.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--blue)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.mt span{width:25px;height:2px;background:var(--white)}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,var(--blue-glow),transparent 60%)}
+.hero-content{z-index:2}
+.hero-tag{font-size:.75rem;letter-spacing:6px;text-transform:uppercase;color:var(--cyan);margin-bottom:2rem}
+.hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem}
+.hero h1 .accent{color:var(--blue)}
+.hero p{color:var(--muted);max-width:500px;margin:0 auto 2.5rem;line-height:1.8}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .4s;border-radius:4px}
+.btn-blue{background:var(--blue);color:white;border:2px solid var(--blue);box-shadow:0 0 25px var(--blue-glow)}
+.btn-blue:hover{background:transparent;color:var(--blue)}
+.btn-ghost{border:1px solid rgba(0,102,255,.3);color:var(--blue);margin-left:1rem;border-radius:4px}
+.btn-ghost:hover{background:var(--blue);color:white}
+
+section{padding:6rem 5%}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{font-size:.75rem;letter-spacing:5px;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem}
+.section-line{width:60px;height:3px;background:var(--blue);margin:0 auto;border-radius:2px}
+
+.about{background:var(--dark)}
+.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-visual{aspect-ratio:4/3;background:linear-gradient(135deg,var(--card),#1E1E30);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;border:1px solid rgba(0,102,255,.1)}
+.about-text h2{font-size:2.2rem;font-weight:800;margin-bottom:1.5rem}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.stat-box{text-align:center;padding:1rem;background:var(--card);border-radius:8px;border:1px solid rgba(0,102,255,.06)}
+.stat-num{font-size:2rem;font-weight:900;color:var(--blue)}
+.stat-label{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:.3rem}
+
+.programs{background:var(--black)}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.prog-card{background:var(--card);border:1px solid rgba(0,102,255,.06);border-radius:8px;padding:2rem;transition:all .4s}
+.prog-card:hover{border-color:rgba(0,102,255,.2);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.prog-icon{font-size:2rem;margin-bottom:1rem}
+.prog-name{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.prog-desc{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+.pricing{background:var(--dark)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid rgba(0,102,255,.06);border-radius:8px;padding:2.5rem;text-align:center;transition:all .4s;position:relative}
+.price-card.featured{border-color:var(--blue);box-shadow:0 0 40px var(--blue-glow)}
+.price-card.featured .price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:white;padding:.3rem 1rem;font-size:.7rem;font-weight:700;border-radius:20px;letter-spacing:1px}
+.price-plan{font-size:1rem;font-weight:600;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:2px}
+.price-amount{font-size:3rem;font-weight:900;color:var(--blue);margin-bottom:.5rem}
+.price-period{font-size:.8rem;color:var(--muted);margin-bottom:2rem}
+.price-features{list-style:none;text-align:left;margin-bottom:2rem}
+.price-features li{padding:.5rem 0;font-size:.85rem;color:var(--muted);border-bottom:1px solid rgba(0,102,255,.04)}
+.price-features li::before{content:'✓ ';color:var(--blue);font-weight:700}
+
+.trainers{background:var(--black)}
+.trainer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1000px;margin:0 auto}
+.trainer-card{text-align:center;padding:1.5rem;background:var(--card);border-radius:8px;border:1px solid rgba(0,102,255,.04)}
+.trainer-avatar{width:80px;height:80px;margin:0 auto 1rem;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:2rem}
+.trainer-name{font-weight:600;margin-bottom:.2rem}
+.trainer-spec{font-size:.75rem;color:var(--blue);letter-spacing:1px}
+
+.cta{background:linear-gradient(135deg,#0A0A1A,var(--black));text-align:center;padding:5rem;position:relative}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle,var(--blue-glow),transparent 60%)}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem;position:relative}
+.cta p{color:var(--muted);margin-bottom:2rem;position:relative}
+.cta-info{display:flex;justify-content:center;gap:3rem;margin-top:2rem;position:relative}
+.cta-item{text-align:center}
+.cta-item-icon{font-size:1.3rem;margin-bottom:.5rem}
+.cta-item-value{font-size:.9rem;color:var(--blue)}
+.cta-item-label{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+
+footer{background:var(--dark);padding:3rem 5%;text-align:center;border-top:1px solid rgba(0,102,255,.06)}
+.footer-logo{font-size:1.3rem;font-weight:900;color:var(--blue);margin-bottom:1rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.8rem}
+.footer-links a:hover{color:var(--blue)}
+.footer-copy{font-size:.7rem;color:rgba(0,102,255,.2)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+.nav-links{display:none}.mt{display:flex}
+.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}
+.about-grid,.price-grid{grid-template-columns:1fr}
+.trainer-grid{grid-template-columns:1fr 1fr}
+.cta-info{flex-direction:column;gap:1.5rem}
+.btn-ghost{margin-left:0;margin-top:1rem;display:block}
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav>
+  <a href="#" class="nav-logo">ASPRIA</a>
+  <ul class="nav-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#programs">პროგრამები</a></li>
+    <li><a href="#pricing">გაწევრიანება</a></li>
+    <li><a href="#contact">კონტაქტი</a></li>
+  </ul>
+  <button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-tag">Premium Fitness Club</p>
+    <h1>ASPRIA<br><span class="accent">FITNESS</span></h1>
+    <p>პრემიალური ფიტნეს კლუბი თბილისში. შენი ტრანსფორმაცია იწყება აქ — თანამედროვე აღჭურვილობა, პროფესიონალური მწვრთნელები.</p>
+    <a href="#pricing" class="btn btn-blue">გაწევრიანდი</a>
+    <a href="#programs" class="btn btn-ghost">პროგრამები</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">💪</div>
+    <div class="about-text reveal">
+      <h2>შენი საუკეთესო ვერსია</h2>
+      <p>Aspria Fitness — ეს არის მეტი ვიდრე სპორტდარბაზი. ეს არის ცხოვრების წესი. თანამედროვე აღჭურვილობა, პროფესიონალური გუნდი და მოტივაციური ატმოსფერო.</p>
+      <p>ჩვენ დაგეხმარებით მიაღწიოთ თქვენს მიზნებს — იქნება ეს წონის დაკლება, კუნთების მასის მომატება თუ ჯანსაღი ცხოვრების წესის დაწყება.</p>
+      <div class="about-stats">
+        <div class="stat-box"><div class="stat-num">500+</div><div class="stat-label">წევრი</div></div>
+        <div class="stat-box"><div class="stat-num">10+</div><div class="stat-label">მწვრთნელი</div></div>
+        <div class="stat-box"><div class="stat-num">1000m²</div><div class="stat-label">სივრცე</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="section-header">
+    <p class="section-label">პროგრამები</p>
+    <h2 class="section-title">ვარჯიშის პროგრამები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card reveal"><div class="prog-icon">🏋️</div><div class="prog-name">Strength Training</div><div class="prog-desc">ძალოვანი ვარჯიში — კუნთების მშენებლობა და სხეულის ფორმირება.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">🏃</div><div class="prog-name">Cardio</div><div class="prog-desc">კარდიო ვარჯიშები — გამძლეობის ამაღლება და ცხიმის წვა.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">🧘</div><div class="prog-name">Yoga & Stretch</div><div class="prog-desc">იოგა და სტრეჩინგი — მოქნილობა და სულიერი ბალანსი.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">🥊</div><div class="prog-name">Boxing</div><div class="prog-desc">ბოქსი — ენერგია, კოორდინაცია და თავდაჯერებულობა.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">👥</div><div class="prog-name">Group Classes</div><div class="prog-desc">ჯგუფური გაკვეთილები — მოტივაცია და ერთობლივი ენერგია.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">📋</div><div class="prog-name">Personal Training</div><div class="prog-desc">ინდივიდუალური მიდგომა — პერსონალური მწვრთნელი.</div></div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-header">
+    <p class="section-label">გაწევრიანება</p>
+    <h2 class="section-title">აირჩიე შენი გეგმა</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="price-grid">
+    <div class="price-card reveal">
+      <div class="price-plan">Basic</div>
+      <div class="price-amount">₾ 80</div>
+      <div class="price-period">თვეში</div>
+      <ul class="price-features">
+        <li>სავარჯიშო დარბაზი</li>
+        <li>კარდიო ზონა</li>
+        <li>საშხაპე</li>
+        <li>ლოკერი</li>
+      </ul>
+      <a href="#contact" class="btn btn-ghost" style="margin:0;width:100%;text-align:center">არჩევა</a>
+    </div>
+    <div class="price-card featured reveal">
+      <div class="price-badge">პოპულარული</div>
+      <div class="price-plan">Premium</div>
+      <div class="price-amount">₾ 120</div>
+      <div class="price-period">თვეში</div>
+      <ul class="price-features">
+        <li>ყველაფერი Basic-ში</li>
+        <li>ჯგუფური გაკვეთილები</li>
+        <li>საუნა & სპა</li>
+        <li>1 პერსონალური ვარჯიში</li>
+      </ul>
+      <a href="#contact" class="btn btn-blue" style="margin:0;width:100%;text-align:center">არჩევა</a>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-plan">VIP</div>
+      <div class="price-amount">₾ 200</div>
+      <div class="price-period">თვეში</div>
+      <ul class="price-features">
+        <li>ყველაფერი Premium-ში</li>
+        <li>4 პერსონალური ვარჯიში</li>
+        <li>კვების გეგმა</li>
+        <li>24/7 წვდომა</li>
+      </ul>
+      <a href="#contact" class="btn btn-ghost" style="margin:0;width:100%;text-align:center">არჩევა</a>
+    </div>
+  </div>
+</section>
+
+<section class="trainers">
+  <div class="section-header">
+    <p class="section-label">გუნდი</p>
+    <h2 class="section-title">მწვრთნელები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="trainer-grid">
+    <div class="trainer-card reveal"><div class="trainer-avatar">💪</div><div class="trainer-name">გიორგი</div><div class="trainer-spec">Strength</div></div>
+    <div class="trainer-card reveal"><div class="trainer-avatar">🏃</div><div class="trainer-name">ანა</div><div class="trainer-spec">Cardio</div></div>
+    <div class="trainer-card reveal"><div class="trainer-avatar">🧘</div><div class="trainer-name">მარიამ</div><div class="trainer-spec">Yoga</div></div>
+    <div class="trainer-card reveal"><div class="trainer-avatar">🥊</div><div class="trainer-name">დავით</div><div class="trainer-spec">Boxing</div></div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2 class="reveal">დაიწყე ახლავე</h2>
+  <p class="reveal">პირველი ვარჯიში უფასოა — მოდი და გაიცანი ჩვენი სივრცე</p>
+  <a href="tel:+995555890123" class="btn btn-blue reveal">+995 555 890 123</a>
+  <div class="cta-info reveal">
+    <div class="cta-item"><div class="cta-item-icon">📍</div><div class="cta-item-label">მისამართი</div><div class="cta-item-value">კოსტავას ქ. 56, თბილისი</div></div>
+    <div class="cta-item"><div class="cta-item-icon">🕐</div><div class="cta-item-label">საათები</div><div class="cta-item-value">07:00 — 23:00</div></div>
+    <div class="cta-item"><div class="cta-item-icon">📱</div><div class="cta-item-label">Instagram</div><div class="cta-item-value">@aspria_fitness</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">ASPRIA FITNESS</div>
+  <ul class="footer-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#programs">პროგრამები</a></li>
+    <li><a href="#pricing">ფასები</a></li>
+    <li><a href="https://www.instagram.com/aspria_fitness/" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 Aspria Fitness. Tbilisi. | Demo Version</p>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

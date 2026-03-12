@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gentleman Barbershop Tbilisi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@200;300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --mahogany: #4A2C2A;
+  --mahogany-dark: #3A1F1E;
+  --leather: #8B5E3C;
+  --gold: #C8A96E;
+  --gold-light: #D4BA82;
+  --black: #0F0D0C;
+  --dark: #1A1614;
+  --cream: #F5EDE0;
+  --text-muted: #8B8078;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', 'Noto Sans Georgian', sans-serif; background: var(--black); color: var(--cream); overflow-x: hidden; }
+
+.demo-badge { position: fixed; top: 20px; right: -35px; background: var(--gold); color: var(--black); padding: 5px 40px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transform: rotate(45deg); z-index: 9999; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s; }
+nav.scrolled { background: rgba(15,13,12,0.95); backdrop-filter: blur(20px); }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: 3px; text-transform: uppercase; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--cream); font-size: 0.8rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.menu-toggle span { width: 25px; height: 2px; background: var(--cream); }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; background: var(--black); overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(139,94,60,0.12) 0%, transparent 60%); }
+.hero-frame { position: absolute; width: 60vw; height: 70vh; border: 1px solid rgba(200,169,110,0.1); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.hero-frame::before { content: ''; position: absolute; inset: -20px; border: 1px solid rgba(200,169,110,0.05); }
+.hero-content { z-index: 2; }
+.hero-crest { font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.8; }
+.hero-tag { font-size: 0.75rem; letter-spacing: 8px; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 900; line-height: 1.1; margin-bottom: 0.5rem; }
+.hero h1 .script { font-style: italic; color: var(--gold); font-weight: 400; display: block; font-size: 0.5em; }
+.hero p { color: var(--text-muted); margin: 1.5rem auto 2.5rem; max-width: 450px; line-height: 1.8; }
+.btn { display: inline-block; padding: 1rem 2.5rem; text-decoration: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all 0.4s; }
+.btn-gold { background: var(--gold); color: var(--black); border: 2px solid var(--gold); }
+.btn-gold:hover { background: transparent; color: var(--gold); }
+.btn-outline { border: 1px solid rgba(200,169,110,0.3); color: var(--gold); margin-left: 1rem; }
+.btn-outline:hover { background: var(--gold); color: var(--black); }
+
+/* About */
+.about { padding: 7rem 5%; background: var(--dark); }
+.about-wrap { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-visual { aspect-ratio: 3/4; background: linear-gradient(135deg, var(--mahogany), var(--mahogany-dark)); border-radius: 2px; position: relative; display: flex; align-items: center; justify-content: center; }
+.about-visual::after { content: '✂'; font-size: 5rem; opacity: 0.15; }
+.about-visual .frame { position: absolute; inset: 15px; border: 1px solid rgba(200,169,110,0.2); }
+.about-text .label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.about-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+.about-text p { color: var(--text-muted); line-height: 1.9; margin-bottom: 1.2rem; }
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.value-item { display: flex; align-items: center; gap: 0.8rem; font-size: 0.9rem; }
+.value-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* Services */
+.services { padding: 7rem 5%; background: var(--black); }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+.section-line { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+.service-card { background: var(--dark); border: 1px solid rgba(200,169,110,0.08); padding: 2rem; transition: all 0.4s; position: relative; overflow: hidden; }
+.service-card:hover { border-color: rgba(200,169,110,0.2); transform: translateY(-3px); }
+.service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s; }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.service-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.5rem; }
+.service-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.service-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid rgba(200,169,110,0.08); }
+.service-price { font-size: 1.2rem; font-weight: 600; color: var(--gold); }
+.service-time { font-size: 0.8rem; color: var(--text-muted); }
+
+/* Team */
+.team { padding: 7rem 5%; background: var(--dark); }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+.team-card { text-align: center; }
+.team-photo { width: 180px; height: 180px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, var(--mahogany), var(--leather)); display: flex; align-items: center; justify-content: center; font-size: 3rem; border: 3px solid rgba(200,169,110,0.1); }
+.team-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.3rem; }
+.team-role { font-size: 0.8rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+
+/* Booking CTA */
+.booking { padding: 6rem 5%; background: linear-gradient(135deg, var(--mahogany-dark), var(--black)); text-align: center; }
+.booking h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; }
+.booking p { color: var(--text-muted); margin-bottom: 2rem; }
+.booking-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; }
+.booking-item { text-align: center; }
+.booking-item-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.booking-item-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 0.3rem; }
+.booking-item-value { font-size: 0.95rem; color: var(--gold); }
+
+footer { background: var(--black); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(200,169,110,0.06); }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1rem; letter-spacing: 3px; }
+.footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-bottom: 1.5rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.7rem; color: rgba(200,169,110,0.2); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--black); padding: 2rem 5%; }
+  .about-wrap { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .booking-info { flex-direction: column; gap: 1.5rem; }
+  .btn-outline { margin-left: 0; margin-top: 1rem; display: block; }
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+
+<nav>
+  <a href="#" class="nav-logo">Gentleman</a>
+  <ul class="nav-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="#team">გუნდი</a></li>
+    <li><a href="#booking">ჩაწერა</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-frame"></div>
+  <div class="hero-content">
+    <div class="hero-crest">👑</div>
+    <p class="hero-tag">Est. Tbilisi</p>
+    <h1>Gentleman<span class="script">Barbershop</span></h1>
+    <p>ხელოვნება ყოველ ჭრაში. სტილი ყოველ დეტალში. ჯენტლმენის ბარბერშოპი — სადაც ტრადიცია თანამედროვეობას ხვდება.</p>
+    <a href="#services" class="btn btn-gold">სერვისები</a>
+    <a href="#booking" class="btn btn-outline">ჩაეწერე</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="about-visual reveal">
+      <div class="frame"></div>
+    </div>
+    <div class="about-text reveal">
+      <p class="label">ჩვენ შესახებ</p>
+      <h2>კლასიკური ბარბერშოპის ტრადიცია</h2>
+      <p>Gentleman Barbershop-ში ჩვენ გვწამს, რომ ყოველი მამაკაცი იმსახურებს პრემიალურ მოვლას. ჩვენი გამოცდილი ბარბერები აერთიანებენ კლასიკურ ტექნიკებს თანამედროვე სტილთან.</p>
+      <p>ჩვენი სივრცე შექმნილია იმისთვის, რომ თავი იგრძნოთ ჯენტლმენივით — ჭეშმარიტი მამაკაცური ატმოსფერო ხარისხიანი სერვისით.</p>
+      <div class="about-values">
+        <div class="value-item"><div class="value-dot"></div>პრემიალური პროდუქცია</div>
+        <div class="value-item"><div class="value-dot"></div>გამოცდილი ბარბერები</div>
+        <div class="value-item"><div class="value-dot"></div>კლასიკური ტექნიკა</div>
+        <div class="value-item"><div class="value-dot"></div>თანამედროვე სტილი</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header">
+    <p class="section-label">სერვისები</p>
+    <h2 class="section-title">ჩვენი მომსახურება</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">✂️</div>
+      <div class="service-name">კლასიკური თმის შეჭრა</div>
+      <div class="service-desc">ტრადიციული ტექნიკით, თქვენს სტილზე მორგებული. მოიცავს თმის დაბანას და სტილისტიკას.</div>
+      <div class="service-bottom"><span class="service-price">₾ 35</span><span class="service-time">45 წთ</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🪒</div>
+      <div class="service-name">წვერის მოვლა</div>
+      <div class="service-desc">პროფესიონალური წვერის ფორმირება, შეჭრა და მოვლა ცხელი პირსახოცით.</div>
+      <div class="service-bottom"><span class="service-price">₾ 25</span><span class="service-time">30 წთ</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💈</div>
+      <div class="service-name">კლასიკური გაპარსვა</div>
+      <div class="service-desc">ცხელი პირსახოცით კლასიკური გაპარსვა — ნამდვილი ჯენტლმენის რიტუალი.</div>
+      <div class="service-bottom"><span class="service-price">₾ 30</span><span class="service-time">40 წთ</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">👑</div>
+      <div class="service-name">Royal პაკეტი</div>
+      <div class="service-desc">თმის შეჭრა + წვერის მოვლა + სახის მასაჟი. სრული ჯენტლმენის გამოცდილება.</div>
+      <div class="service-bottom"><span class="service-price">₾ 70</span><span class="service-time">90 წთ</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🧴</div>
+      <div class="service-name">სახის მოვლა</div>
+      <div class="service-desc">პროფესიონალური სახის წმენდა და მოვლა მამაკაცებისთვის.</div>
+      <div class="service-bottom"><span class="service-price">₾ 40</span><span class="service-time">45 წთ</span></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💇</div>
+      <div class="service-name">ბავშვის თმის შეჭრა</div>
+      <div class="service-desc">პატარა ჯენტლმენებისთვის, მოთმინებით და ზრუნვით.</div>
+      <div class="service-bottom"><span class="service-price">₾ 20</span><span class="service-time">30 წთ</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="section-header">
+    <p class="section-label">გუნდი</p>
+    <h2 class="section-title">ჩვენი ბარბერები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal"><div class="team-photo">👨</div><div class="team-name">გიორგი</div><div class="team-role">Head Barber</div></div>
+    <div class="team-card reveal"><div class="team-photo">👨</div><div class="team-name">ალექსანდრე</div><div class="team-role">Senior Barber</div></div>
+    <div class="team-card reveal"><div class="team-photo">👨</div><div class="team-name">ნიკა</div><div class="team-role">Style Expert</div></div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2 class="reveal">ჩაეწერეთ ახლავე</h2>
+  <p class="reveal">აირჩიეთ თქვენი ბარბერი და სასურველი დრო</p>
+  <a href="tel:+995555456789" class="btn btn-gold reveal">დარეკე: +995 555 456 789</a>
+  <div class="booking-info reveal">
+    <div class="booking-item"><div class="booking-item-icon">📍</div><div class="booking-item-label">მისამართი</div><div class="booking-item-value">ჭავჭავაძის გამზ. 28, თბილისი</div></div>
+    <div class="booking-item"><div class="booking-item-icon">🕐</div><div class="booking-item-label">სამუშაო საათები</div><div class="booking-item-value">10:00 — 21:00</div></div>
+    <div class="booking-item"><div class="booking-item-icon">📱</div><div class="booking-item-label">Instagram</div><div class="booking-item-value">@gentlemantbilisi</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">GENTLEMAN</div>
+  <ul class="footer-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="#team">გუნდი</a></li>
+    <li><a href="https://www.instagram.com/gentlemantbilisi/" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 Gentleman Barbershop. Tbilisi. | Demo Version</p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50); });
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

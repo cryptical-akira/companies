@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camora Barbershop</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@200;300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --noir: #0C0B0A;
+  --dark: #161412;
+  --card: #1C1A17;
+  --sepia: #8B7355;
+  --gold-vintage: #B8956A;
+  --red-wine: #6B2D3E;
+  --cream: #EDE5D8;
+  --text-muted: #7A7068;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', 'Noto Sans Georgian', sans-serif; background: var(--noir); color: var(--cream); overflow-x: hidden; }
+
+.demo-badge { position: fixed; top: 20px; right: -35px; background: var(--red-wine); color: var(--cream); padding: 5px 40px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transform: rotate(45deg); z-index: 9999; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s; }
+nav.scrolled { background: rgba(12,11,10,0.95); backdrop-filter: blur(20px); }
+.nav-logo { font-family: 'Bodoni Moda', serif; font-size: 1.6rem; font-weight: 900; color: var(--gold-vintage); text-decoration: none; letter-spacing: 2px; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--cream); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold-vintage); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.menu-toggle span { width: 25px; height: 2px; background: var(--cream); }
+
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(107,45,62,0.15) 0%, var(--noir) 70%); }
+.hero-ornament { position: absolute; width: 300px; height: 300px; border: 1px solid rgba(184,149,106,0.08); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.hero-ornament::before { content: ''; position: absolute; inset: 30px; border: 1px solid rgba(184,149,106,0.06); border-radius: 50%; }
+.hero-ornament::after { content: ''; position: absolute; inset: 60px; border: 1px solid rgba(184,149,106,0.04); border-radius: 50%; }
+.hero-content { z-index: 2; }
+.hero-tag { font-size: 0.7rem; letter-spacing: 8px; text-transform: uppercase; color: var(--gold-vintage); margin-bottom: 2rem; }
+.hero h1 { font-family: 'Bodoni Moda', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.5rem; letter-spacing: 3px; }
+.hero h1 .italic { font-style: italic; font-weight: 400; color: var(--gold-vintage); display: block; font-size: 0.4em; letter-spacing: 6px; }
+.hero p { color: var(--text-muted); max-width: 450px; margin: 1.5rem auto 2.5rem; line-height: 1.8; }
+.btn { display: inline-block; padding: 1rem 2.5rem; text-decoration: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all 0.4s; }
+.btn-vintage { background: var(--gold-vintage); color: var(--noir); border: 2px solid var(--gold-vintage); }
+.btn-vintage:hover { background: transparent; color: var(--gold-vintage); }
+
+.story { padding: 7rem 5%; background: var(--dark); }
+.story-wrap { max-width: 900px; margin: 0 auto; text-align: center; }
+.story .label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold-vintage); margin-bottom: 1.5rem; }
+.story h2 { font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 2rem; }
+.story p { color: var(--text-muted); line-height: 2; max-width: 700px; margin: 0 auto 1.5rem; }
+.story-divider { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 3rem 0; }
+.story-divider .line { width: 80px; height: 1px; background: rgba(184,149,106,0.2); }
+.story-divider .diamond { width: 8px; height: 8px; background: var(--gold-vintage); transform: rotate(45deg); }
+
+.services { padding: 7rem 5%; background: var(--noir); }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold-vintage); margin-bottom: 1rem; }
+.section-title { font-family: 'Bodoni Moda', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+.section-line { width: 60px; height: 2px; background: var(--gold-vintage); margin: 0 auto; }
+.services-list { max-width: 800px; margin: 0 auto; }
+.service-row { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid rgba(184,149,106,0.08); transition: all 0.3s; }
+.service-row:hover { padding-left: 1rem; border-color: rgba(184,149,106,0.2); }
+.service-row-left { display: flex; align-items: center; gap: 1.5rem; }
+.service-row-icon { font-size: 1.3rem; }
+.service-row-name { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; }
+.service-row-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+.service-row-right { text-align: right; }
+.service-row-price { font-size: 1.1rem; color: var(--gold-vintage); font-weight: 600; }
+.service-row-time { font-size: 0.75rem; color: var(--text-muted); }
+
+.team { padding: 7rem 5%; background: var(--dark); }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+.team-member { text-align: center; }
+.member-avatar { width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: linear-gradient(135deg, var(--red-wine), var(--sepia)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border: 2px solid rgba(184,149,106,0.1); }
+.member-name { font-family: 'Bodoni Moda', serif; font-size: 1rem; margin-bottom: 0.3rem; }
+.member-role { font-size: 0.75rem; color: var(--gold-vintage); letter-spacing: 1px; }
+
+.booking { padding: 6rem 5%; background: var(--noir); text-align: center; }
+.booking h2 { font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 1rem; }
+.booking p { color: var(--text-muted); margin-bottom: 2rem; }
+.booking-details { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; }
+.booking-detail { text-align: center; }
+.booking-detail-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.booking-detail-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 0.3rem; }
+.booking-detail-value { font-size: 0.9rem; color: var(--gold-vintage); }
+
+footer { background: var(--dark); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(184,149,106,0.06); }
+.footer-logo { font-family: 'Bodoni Moda', serif; font-size: 1.3rem; color: var(--gold-vintage); margin-bottom: 1rem; }
+.footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-bottom: 1.5rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+.footer-links a:hover { color: var(--gold-vintage); }
+.footer-copy { font-size: 0.7rem; color: rgba(184,149,106,0.2); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--noir); padding: 2rem 5%; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .booking-details { flex-direction: column; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+
+<nav>
+  <a href="#" class="nav-logo">CAMORA</a>
+  <ul class="nav-links">
+    <li><a href="#story">ისტორია</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="#team">გუნდი</a></li>
+    <li><a href="#booking">ჩაწერა</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Barbershop • Tbilisi</p>
+    <h1>CAMORA<span class="italic">Barbershop</span></h1>
+    <p>ელეგანტურობა, სტილი და ტრადიცია. Camora — სადაც ყოველი ვიზიტი განსაკუთრებული გამოცდილებაა.</p>
+    <a href="#services" class="btn btn-vintage">სერვისები</a>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="story-wrap reveal">
+    <p class="label">ჩვენი ისტორია</p>
+    <h2>ტრადიცია & სტილი</h2>
+    <p>Camora Barbershop დაარსდა სტილის მოყვარულთა ჯგუფის მიერ, რომლებსაც სურდათ შეექმნათ სივრცე, სადაც კლასიკური ბარბერშოპის კულტურა თანამედროვე ესთეტიკას ხვდება.</p>
+    <div class="story-divider"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+    <p>ჩვენ გვწამს, რომ ყოველი მამაკაცი იმსახურებს განსაკუთრებულ მოვლას. სწორედ ამიტომ, Camora-ში ყოველი ვიზიტი არის რიტუალი — ყურადღება დეტალებზე, ხარისხიანი პროდუქტები და ოსტატობა.</p>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header">
+    <p class="section-label">მომსახურება</p>
+    <h2 class="section-title">სერვისები & ფასები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="services-list">
+    <div class="service-row reveal"><div class="service-row-left"><span class="service-row-icon">✂️</span><div><div class="service-row-name">თმის შეჭრა</div><div class="service-row-desc">კონსულტაცია, შეჭრა, სტაილინგი</div></div></div><div class="service-row-right"><div class="service-row-price">₾ 30</div><div class="service-row-time">40 წთ</div></div></div>
+    <div class="service-row reveal"><div class="service-row-left"><span class="service-row-icon">🪒</span><div><div class="service-row-name">წვერის ფორმირება</div><div class="service-row-desc">ფორმირება და მოვლა</div></div></div><div class="service-row-right"><div class="service-row-price">₾ 20</div><div class="service-row-time">25 წთ</div></div></div>
+    <div class="service-row reveal"><div class="service-row-left"><span class="service-row-icon">💈</span><div><div class="service-row-name">კლასიკური გაპარსვა</div><div class="service-row-desc">ცხელი პირსახოცი, კლასიკური საპარსი</div></div></div><div class="service-row-right"><div class="service-row-price">₾ 25</div><div class="service-row-time">35 წთ</div></div></div>
+    <div class="service-row reveal"><div class="service-row-left"><span class="service-row-icon">👑</span><div><div class="service-row-name">Camora VIP</div><div class="service-row-desc">თმა + წვერი + სახის მოვლა + მასაჟი</div></div></div><div class="service-row-right"><div class="service-row-price">₾ 65</div><div class="service-row-time">80 წთ</div></div></div>
+    <div class="service-row reveal"><div class="service-row-left"><span class="service-row-icon">🧴</span><div><div class="service-row-name">თმის შეღებვა</div><div class="service-row-desc">პროფესიონალური შეღებვა</div></div></div><div class="service-row-right"><div class="service-row-price">₾ 40</div><div class="service-row-time">50 წთ</div></div></div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="section-header">
+    <p class="section-label">ოსტატები</p>
+    <h2 class="section-title">ჩვენი გუნდი</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="team-grid">
+    <div class="team-member reveal"><div class="member-avatar">👨</div><div class="member-name">დავით</div><div class="member-role">Founder & Barber</div></div>
+    <div class="team-member reveal"><div class="member-avatar">👨</div><div class="member-name">ლაშა</div><div class="member-role">Senior Barber</div></div>
+    <div class="team-member reveal"><div class="member-avatar">👨</div><div class="member-name">გიგა</div><div class="member-role">Barber</div></div>
+    <div class="team-member reveal"><div class="member-avatar">👨</div><div class="member-name">ზურა</div><div class="member-role">Junior Barber</div></div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2 class="reveal">ჩაეწერე ახლავე</h2>
+  <p class="reveal">აირჩიე შენი ბარბერი და დრო</p>
+  <a href="tel:+995555567890" class="btn btn-vintage reveal">+995 555 567 890</a>
+  <div class="booking-details reveal">
+    <div class="booking-detail"><div class="booking-detail-icon">📍</div><div class="booking-detail-label">მისამართი</div><div class="booking-detail-value">პეკინის გამზ. 15, თბილისი</div></div>
+    <div class="booking-detail"><div class="booking-detail-icon">🕐</div><div class="booking-detail-label">საათები</div><div class="booking-detail-value">10:00 — 21:00</div></div>
+    <div class="booking-detail"><div class="booking-detail-icon">📱</div><div class="booking-detail-label">Facebook</div><div class="booking-detail-value">Camora Barbershop</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">CAMORA</div>
+  <ul class="footer-links">
+    <li><a href="#story">ისტორია</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="https://www.facebook.com/CamoraBarbershop/" target="_blank">Facebook</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 Camora Barbershop. Tbilisi. | Demo Version</p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50); });
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

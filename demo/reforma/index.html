@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reforma | myreform.ge</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--white:#FAFAFA;--light:#F2F2F2;--card:#FFFFFF;--dark:#1A1A1A;--text:#333;--muted:#888;--accent:#1A1A1A;--accent-light:#444;--line:#E5E5E5}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--dark);color:var(--white);padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s;background:transparent}
+nav.scrolled{background:rgba(250,250,250,.95);backdrop-filter:blur(20px);box-shadow:0 1px 10px rgba(0,0,0,.05)}
+.nav-logo{font-size:1.4rem;font-weight:900;color:var(--dark);text-decoration:none;letter-spacing:3px;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--dark)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:2px;background:var(--dark)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--white)}
+.hero-content{z-index:2;max-width:700px;padding:2rem}
+.hero-tag{font-size:.7rem;letter-spacing:8px;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;font-weight:500}
+.hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;letter-spacing:2px;line-height:1.05;margin-bottom:1.5rem;text-transform:uppercase}
+.hero p{color:var(--muted);max-width:450px;margin:0 auto 2.5rem;line-height:1.9;font-weight:300}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .4s;border-radius:0}
+.btn-dark{background:var(--dark);color:var(--white);border:2px solid var(--dark)}.btn-dark:hover{background:transparent;color:var(--dark)}
+.btn-light{border:1px solid var(--line);color:var(--muted);margin-left:1rem}.btn-light:hover{border-color:var(--dark);color:var(--dark)}
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.65rem;letter-spacing:6px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;font-weight:500}.st{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem;letter-spacing:1px}.sln{width:40px;height:2px;background:var(--dark);margin:0 auto}
+.about{background:var(--light)}.about-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-visual{aspect-ratio:4/3;background:linear-gradient(135deg,#E8E8E8,#D5D5D5);display:flex;align-items:center;justify-content:center;font-size:4rem}
+.about-text h2{font-size:2rem;font-weight:800;margin-bottom:1.5rem;letter-spacing:1px}
+.about-text p{color:var(--muted);line-height:2;margin-bottom:1rem;font-weight:300;font-size:.95rem}
+.programs{background:var(--white)}.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
+.prog-card{background:var(--card);border:1px solid var(--line);padding:2rem;transition:all .4s}
+.prog-card:hover{border-color:var(--dark);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.prog-icon{font-size:1.8rem;margin-bottom:1rem}.prog-name{font-size:1rem;font-weight:700;margin-bottom:.5rem;letter-spacing:1px}.prog-desc{font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:300}
+.stories{background:var(--light)}.stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.story-card{background:var(--card);border:1px solid var(--line);padding:2rem;text-align:center}
+.story-result{font-size:2rem;font-weight:900;margin-bottom:.5rem}.story-name{font-size:.85rem;font-weight:600;margin-bottom:.3rem}.story-desc{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300}
+.pricing{background:var(--white)}.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid var(--line);padding:2.5rem;text-align:center;transition:all .4s}
+.price-card.feat{border-color:var(--dark);box-shadow:0 5px 30px rgba(0,0,0,.08)}.price-card.feat .pbadge{background:var(--dark);color:var(--white);padding:.3rem 1rem;font-size:.65rem;font-weight:700;display:inline-block;margin-bottom:1rem;letter-spacing:2px}
+.pplan{font-size:.8rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:.5rem;color:var(--muted)}.pamount{font-size:3rem;font-weight:900;color:var(--dark);margin-bottom:.5rem}.pper{font-size:.8rem;color:var(--muted);margin-bottom:2rem}
+.pfeats{list-style:none;text-align:left;margin-bottom:2rem}.pfeats li{padding:.5rem 0;font-size:.85rem;color:var(--muted);border-bottom:1px solid var(--line);font-weight:300}.pfeats li::before{content:'— ';color:var(--dark)}
+.cta{background:var(--dark);color:var(--white);text-align:center;padding:5rem 5%}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem;letter-spacing:1px}.cta p{color:rgba(255,255,255,.5);margin-bottom:2rem}
+.cta .btn-dark{background:var(--white);color:var(--dark);border-color:var(--white)}.cta .btn-dark:hover{background:transparent;color:var(--white)}
+.cta-info{display:flex;justify-content:center;gap:3rem;margin-top:2rem}.ci{text-align:center}.ci-icon{font-size:1.2rem;margin-bottom:.3rem}.ci-val{font-size:.9rem;color:var(--white)}.ci-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.4)}
+footer{background:var(--light);padding:3rem 5%;text-align:center}
+.fl{font-size:1.2rem;font-weight:900;letter-spacing:3px;margin-bottom:1rem;text-transform:uppercase}.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}.flinks a{color:var(--muted);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--dark)}.fc{font-size:.7rem;color:#CCC}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--white);padding:2rem 5%;box-shadow:0 10px 30px rgba(0,0,0,.05)}.about-grid,.price-grid{grid-template-columns:1fr}.stories-grid{grid-template-columns:1fr}.cta-info{flex-direction:column;gap:1.5rem}.btn-light{margin-left:0;margin-top:1rem;display:block}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">Reforma</a><ul class="nav-links"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#programs">პროგრამები</a></li><li><a href="#pricing">ფასები</a></li><li><a href="#contact">კონტაქტი</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="hero-content"><p class="hero-tag">Transform Your Life</p><h1>REFORMA</h1><p>შენი ტრანსფორმაცია. ჩვენი მისია. Reforma — სადაც ცვლილება ხდება რეალობად.</p><a href="#pricing" class="btn btn-dark">დაიწყე</a><a href="#programs" class="btn btn-light">პროგრამები</a></div></section>
+
+<section class="about" id="about"><div class="about-grid"><div class="about-visual reveal">✨</div><div class="about-text reveal"><h2>ცვლილება იწყება აქ</h2><p>Reforma — ეს არის მეტი ვიდრე ფიტნეს კლუბი. ეს არის ტრანსფორმაციის ცენტრი, სადაც ყოველი წევრი იწყებს ახალ თავს. პროფესიონალური მიდგომა, ინდივიდუალური გეგმები და მუდმივი მხარდაჭერა.</p><p>ჩვენი გამოცდილი მწვრთნელები დაგეხმარებიან მიაღწიო სასურველ შედეგს — ნაბიჯ-ნაბიჯ.</p></div></div></section>
+
+<section class="programs" id="programs"><div class="sh"><p class="sl">პროგრამები</p><h2 class="st">ტრანსფორმაციის გზები</h2><div class="sln"></div></div><div class="prog-grid"><div class="prog-card reveal"><div class="prog-icon">🏋️</div><div class="prog-name">Power Reform</div><div class="prog-desc">ძალოვანი ტრანსფორმაცია — კუნთების მშენებლობა.</div></div><div class="prog-card reveal"><div class="prog-icon">🔥</div><div class="prog-name">Lean Reform</div><div class="prog-desc">წონის კორექცია — ცხიმის წვა და ტონუსი.</div></div><div class="prog-card reveal"><div class="prog-icon">🧘</div><div class="prog-name">Mind Reform</div><div class="prog-desc">იოგა და მედიტაცია — სულიერი ბალანსი.</div></div><div class="prog-card reveal"><div class="prog-icon">📋</div><div class="prog-name">Total Reform</div><div class="prog-desc">სრული პაკეტი — ვარჯიში + კვება + მენტორი.</div></div></div></section>
+
+<section class="stories"><div class="sh"><p class="sl">შედეგები</p><h2 class="st">ტრანსფორმაციის ისტორიები</h2><div class="sln"></div></div><div class="stories-grid"><div class="story-card reveal"><div class="story-result">-15 კგ</div><div class="story-name">გიორგი მ.</div><div class="story-desc">3 თვეში 15 კილოგრამი დავიკელი Reforma-ს პროგრამით.</div></div><div class="story-card reveal"><div class="story-result">+8 კგ</div><div class="story-name">ნიკა ლ.</div><div class="story-desc">კუნთების მასა მოვიმატე პერსონალური მწვრთნელის დახმარებით.</div></div><div class="story-card reveal"><div class="story-result">100%</div><div class="story-name">ანა კ.</div><div class="story-desc">სრულიად შევიცვალე — არა მარტო სხეულით, არამედ სულისკვეთებითაც.</div></div></div></section>
+
+<section class="pricing" id="pricing"><div class="sh"><p class="sl">გაწევრიანება</p><h2 class="st">ფასები</h2><div class="sln"></div></div><div class="price-grid"><div class="price-card reveal"><div class="pplan">Start</div><div class="pamount">₾ 70</div><div class="pper">თვეში</div><ul class="pfeats"><li>სავარჯიშო დარბაზი</li><li>კარდიო ზონა</li><li>საშხაპე</li></ul><a href="#contact" class="btn btn-light" style="margin:0;width:100%;text-align:center">არჩევა</a></div><div class="price-card feat reveal"><div class="pbadge">BEST VALUE</div><div class="pplan">Reform</div><div class="pamount">₾ 120</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველაფერი Start-ში</li><li>ჯგუფური ვარჯიშები</li><li>2 პერსონალური</li><li>კვების რჩევა</li></ul><a href="#contact" class="btn btn-dark" style="margin:0;width:100%;text-align:center">არჩევა</a></div><div class="price-card reveal"><div class="pplan">Total</div><div class="pamount">₾ 200</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველაფერი Reform-ში</li><li>8 პერსონალური</li><li>სრული კვების გეგმა</li><li>24/7 + VIP</li></ul><a href="#contact" class="btn btn-light" style="margin:0;width:100%;text-align:center">არჩევა</a></div></div></section>
+
+<section class="cta" id="contact"><h2 class="reveal">შენი რეფორმა იწყება დღეს</h2><p class="reveal">პირველი კონსულტაცია უფასოა</p><a href="tel:+995555567890" class="btn btn-dark reveal">+995 555 567 890</a><div class="cta-info reveal"><div class="ci"><div class="ci-icon">📍</div><div class="ci-lbl">მისამართი</div><div class="ci-val">თბილისი</div></div><div class="ci"><div class="ci-icon">🕐</div><div class="ci-lbl">საათები</div><div class="ci-val">07:00 — 22:00</div></div><div class="ci"><div class="ci-icon">🌐</div><div class="ci-lbl">ვებსაიტი</div><div class="ci-val">myreform.ge</div></div></div></section>
+
+<footer><div class="fl">REFORMA</div><ul class="flinks"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#programs">პროგრამები</a></li><li><a href="https://myreform.ge/" target="_blank">myreform.ge</a></li></ul><p class="fc">© 2024 Reforma. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

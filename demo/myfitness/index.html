@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myfitness Georgia</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0A0A0A;--dark:#141414;--card:#1C1C1C;--red:#FF1744;--red-dark:#D50032;--white:#FAFAFA;--grey:#888;--dark-grey:#333}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--red);color:white;padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-size:1.6rem;font-weight:900;color:var(--white);text-decoration:none}.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--grey);font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--red)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:2px;background:var(--white)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(255,23,68,.1),transparent 50%)}
+.hero-content{z-index:2}.hero-tag{font-size:.75rem;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:2rem;font-weight:700}
+.hero h1{font-size:clamp(3.5rem,10vw,8rem);font-weight:900;line-height:.95;margin-bottom:1.5rem}.hero h1 .red{color:var(--red)}
+.hero p{color:var(--grey);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .4s;border-radius:4px}
+.btn-red{background:var(--red);color:white;border:2px solid var(--red)}.btn-red:hover{background:transparent;color:var(--red)}
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;font-weight:700}.st{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem}.sln{width:40px;height:3px;background:var(--red);margin:0 auto;border-radius:2px}
+.about{background:var(--dark)}.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-visual{aspect-ratio:4/3;background:linear-gradient(135deg,var(--card),#252525);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid var(--dark-grey)}
+.about-text h2{font-size:2.2rem;font-weight:800;margin-bottom:1.5rem}.about-text h2 span{color:var(--red)}
+.about-text p{color:var(--grey);line-height:1.9;margin-bottom:1rem;font-weight:300}
+.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.stat{text-align:center;padding:1rem;background:var(--card);border-radius:8px}.stat-num{font-size:2rem;font-weight:900;color:var(--red)}.stat-label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--grey);margin-top:.3rem}
+.programs{background:var(--black)}.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.prog-card{background:var(--card);border:1px solid #222;border-radius:8px;padding:2rem;transition:all .4s}.prog-card:hover{border-color:var(--red);transform:translateY(-3px)}
+.prog-icon{font-size:2rem;margin-bottom:1rem}.prog-name{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}.prog-desc{font-size:.85rem;color:var(--grey);line-height:1.6;font-weight:300}
+.locations{background:var(--dark)}.loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.loc-card{background:var(--card);border:1px solid #222;border-radius:8px;padding:2rem;text-align:center;transition:all .3s}.loc-card:hover{border-color:var(--red)}
+.loc-icon{font-size:2rem;margin-bottom:1rem}.loc-name{font-weight:700;margin-bottom:.5rem}.loc-addr{font-size:.85rem;color:var(--grey)}
+.pricing{background:var(--black)}.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid #222;border-radius:8px;padding:2.5rem;text-align:center;transition:all .4s}
+.price-card.feat{border-color:var(--red);box-shadow:0 0 40px rgba(255,23,68,.1)}.price-card.feat .pbadge{background:var(--red);color:white;padding:.3rem 1rem;font-size:.7rem;font-weight:700;border-radius:20px;display:inline-block;margin-bottom:1rem}
+.pplan{font-size:.9rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}.pamount{font-size:3rem;font-weight:900;color:var(--red);margin-bottom:.5rem}.pper{font-size:.8rem;color:var(--grey);margin-bottom:2rem}
+.pfeats{list-style:none;text-align:left;margin-bottom:2rem}.pfeats li{padding:.5rem 0;font-size:.85rem;color:var(--grey);border-bottom:1px solid #222;font-weight:300}.pfeats li::before{content:'✓ ';color:var(--red);font-weight:700}
+.cta{background:var(--dark);text-align:center;padding:5rem 5%}.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}.cta h2 span{color:var(--red)}.cta p{color:var(--grey);margin-bottom:2rem}
+.cta-info{display:flex;justify-content:center;gap:3rem;margin-top:2rem}.ci{text-align:center}.ci-icon{font-size:1.2rem;margin-bottom:.3rem}.ci-val{font-size:.9rem;color:var(--red)}.ci-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--grey)}
+footer{background:var(--black);padding:3rem 5%;text-align:center;border-top:1px solid #1A1A1A}
+.fl{font-size:1.3rem;font-weight:900;margin-bottom:1rem}.fl span{color:var(--red)}.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}.flinks a{color:var(--grey);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--red)}.fc{font-size:.7rem;color:#333}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}.about-grid,.price-grid{grid-template-columns:1fr}.loc-grid{grid-template-columns:1fr}.about-stats{grid-template-columns:1fr 1fr}.cta-info{flex-direction:column;gap:1.5rem}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">MY<span>FITNESS</span></a><ul class="nav-links"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#programs">პროგრამები</a></li><li><a href="#locations">ფილიალები</a></li><li><a href="#pricing">ფასები</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="hero-content"><p class="hero-tag">Georgia's Fitness Network</p><h1>MY<span class="red">FITNESS</span></h1><p>საქართველოს ყველაზე დიდი ფიტნეს ქსელი. 18K+ მიმდევარი. შენი ფიტნესი. შენი წესები.</p><a href="#pricing" class="btn btn-red">გაწევრიანდი</a></div></section>
+
+<section class="about" id="about"><div class="about-grid"><div class="about-visual reveal">🏋️</div><div class="about-text reveal"><h2>შენი <span>ფიტნესი</span></h2><p>Myfitness — ეს არის საქართველოს ერთ-ერთი ყველაზე პოპულარული ფიტნეს ბრენდი. ჩვენი მისიაა ჯანსაღი ცხოვრების წესი ხელმისაწვდომი გავხადოთ ყველასთვის.</p><p>თანამედროვე აღჭურვილობა, პროფესიონალური მწვრთნელები და მეგობრული ატმოსფერო — ეს არის Myfitness.</p><div class="about-stats"><div class="stat"><div class="stat-num">18K+</div><div class="stat-label">მიმდევარი</div></div><div class="stat"><div class="stat-num">3</div><div class="stat-label">ფილიალი</div></div><div class="stat"><div class="stat-num">20+</div><div class="stat-label">მწვრთნელი</div></div><div class="stat"><div class="stat-num">5★</div><div class="stat-label">რეიტინგი</div></div></div></div></div></section>
+
+<section class="programs" id="programs"><div class="sh"><p class="sl">პროგრამები</p><h2 class="st">ვარჯიშის მიმართულებები</h2><div class="sln"></div></div><div class="prog-grid"><div class="prog-card reveal"><div class="prog-icon">🏋️</div><div class="prog-name">Strength</div><div class="prog-desc">ძალოვანი ვარჯიში პრო აღჭურვილობით.</div></div><div class="prog-card reveal"><div class="prog-icon">🔥</div><div class="prog-name">HIIT</div><div class="prog-desc">ინტენსიური ინტერვალები — მაქსიმალური ცხიმის წვა.</div></div><div class="prog-card reveal"><div class="prog-icon">🧘</div><div class="prog-name">Yoga</div><div class="prog-desc">იოგა — სხეულის და სულის ბალანსი.</div></div><div class="prog-card reveal"><div class="prog-icon">💃</div><div class="prog-name">Dance Fit</div><div class="prog-desc">ცეკვა-ფიტნესი — გართობა და ვარჯიში ერთად.</div></div><div class="prog-card reveal"><div class="prog-icon">🥊</div><div class="prog-name">Boxing</div><div class="prog-desc">ბოქსი — ძალა, სიჩქარე, კოორდინაცია.</div></div><div class="prog-card reveal"><div class="prog-icon">📱</div><div class="prog-name">My App</div><div class="prog-desc">ონლაინ ვარჯიშები აპლიკაციით სახლიდან.</div></div></div></section>
+
+<section class="locations" id="locations"><div class="sh"><p class="sl">ფილიალები</p><h2 class="st">ჩვენი ლოკაციები</h2><div class="sln"></div></div><div class="loc-grid"><div class="loc-card reveal"><div class="loc-icon">📍</div><div class="loc-name">საბურთალო</div><div class="loc-addr">პეკინის გამზ. 22</div></div><div class="loc-card reveal"><div class="loc-icon">📍</div><div class="loc-name">ვაკე</div><div class="loc-addr">ჭავჭავაძის გამზ. 45</div></div><div class="loc-card reveal"><div class="loc-icon">📍</div><div class="loc-name">გლდანი</div><div class="loc-addr">ხიზანიშვილის ქ. 10</div></div></div></section>
+
+<section class="pricing" id="pricing"><div class="sh"><p class="sl">გაწევრიანება</p><h2 class="st">ფასები</h2><div class="sln"></div></div><div class="price-grid"><div class="price-card reveal"><div class="pplan">Basic</div><div class="pamount">₾ 60</div><div class="pper">თვეში</div><ul class="pfeats"><li>1 ფილიალი</li><li>დარბაზი + კარდიო</li><li>საშხაპე</li></ul><a href="#contact" class="btn btn-red" style="width:100%;text-align:center;background:transparent;color:var(--red);border:1px solid var(--red)">არჩევა</a></div><div class="price-card feat reveal"><div class="pbadge">POPULAR</div><div class="pplan">All Access</div><div class="pamount">₾ 100</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველა ფილიალი</li><li>ჯგუფური ვარჯიშები</li><li>საუნა</li><li>My App</li></ul><a href="#contact" class="btn btn-red" style="width:100%;text-align:center">არჩევა</a></div><div class="price-card reveal"><div class="pplan">Premium</div><div class="pamount">₾ 160</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველაფერი All Access-ში</li><li>4 პერსონალური</li><li>კვების გეგმა</li><li>VIP ლოკერი</li></ul><a href="#contact" class="btn btn-red" style="width:100%;text-align:center;background:transparent;color:var(--red);border:1px solid var(--red)">არჩევა</a></div></div></section>
+
+<section class="cta" id="contact"><h2 class="reveal">დაიწყე <span>ახლავე</span></h2><p class="reveal">პირველი ვარჯიში უფასოა ყველა ფილიალში</p><a href="tel:+995555456789" class="btn btn-red reveal">+995 555 456 789</a><div class="cta-info reveal"><div class="ci"><div class="ci-icon">📍</div><div class="ci-lbl">ფილიალები</div><div class="ci-val">3 ლოკაცია თბილისში</div></div><div class="ci"><div class="ci-icon">🕐</div><div class="ci-lbl">საათები</div><div class="ci-val">06:00 — 23:00</div></div><div class="ci"><div class="ci-icon">📱</div><div class="ci-lbl">Facebook</div><div class="ci-val">@myfitnessGE</div></div></div></section>
+
+<footer><div class="fl">MY<span>FITNESS</span></div><ul class="flinks"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#locations">ფილიალები</a></li><li><a href="https://www.facebook.com/myfitnessGE/" target="_blank">Facebook</a></li></ul><p class="fc">© 2024 Myfitness. Georgia. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

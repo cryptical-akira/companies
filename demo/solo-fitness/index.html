@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solo Fitness</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0A0A0A;--dark:#141414;--card:#1C1C1C;--orange:#FF6B00;--orange-glow:rgba(255,107,0,.12);--white:#FAFAFA;--grey:#888;--light-grey:#E0E0E0}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--orange);color:white;padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-size:1.5rem;font-weight:900;color:var(--white);text-decoration:none;letter-spacing:2px}.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--grey);font-size:.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--orange)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:2px;background:var(--white)}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.hero-content{z-index:2}.hero-tag{font-size:.7rem;letter-spacing:8px;text-transform:uppercase;color:var(--orange);margin-bottom:2rem;font-weight:600}
+.hero h1{font-size:clamp(4rem,12vw,9rem);font-weight:900;letter-spacing:3px;line-height:.95;margin-bottom:1.5rem}
+.hero h1 .dot{color:var(--orange)}
+.hero p{color:var(--grey);max-width:400px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .4s;border-radius:4px}
+.btn-orange{background:var(--orange);color:white;border:2px solid var(--orange)}.btn-orange:hover{background:transparent;color:var(--orange)}
+.btn-minimal{border:1px solid #333;color:var(--grey);margin-left:1rem;border-radius:4px}.btn-minimal:hover{border-color:var(--orange);color:var(--orange)}
+
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;font-weight:600}
+.st{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem}.sln{width:40px;height:3px;background:var(--orange);margin:0 auto;border-radius:2px}
+
+.philosophy{background:var(--dark)}.phil-wrap{max-width:800px;margin:0 auto;text-align:center}
+.phil-wrap h2{font-size:2.5rem;font-weight:800;margin-bottom:1.5rem}.phil-wrap h2 span{color:var(--orange)}
+.phil-wrap p{color:var(--grey);line-height:2;margin-bottom:1rem;font-weight:300}
+.phil-values{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.phil-value{padding:2rem;background:var(--card);border-radius:8px;border:1px solid #222}
+.phil-value-num{font-size:2.5rem;font-weight:900;color:var(--orange);margin-bottom:.5rem}
+.phil-value-text{font-size:.85rem;color:var(--grey);font-weight:300}
+
+.programs{background:var(--black)}.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
+.prog-card{background:var(--card);border:1px solid #1F1F1F;border-radius:8px;padding:2rem;transition:all .4s}
+.prog-card:hover{border-color:var(--orange);transform:translateY(-3px)}
+.prog-icon{font-size:1.8rem;margin-bottom:1rem}.prog-name{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.prog-desc{font-size:.8rem;color:var(--grey);line-height:1.6;font-weight:300}
+
+.pricing{background:var(--dark)}.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid #1F1F1F;border-radius:8px;padding:2.5rem;text-align:center;transition:all .4s}
+.price-card.feat{border-color:var(--orange);box-shadow:0 0 40px var(--orange-glow)}
+.price-card.feat .pbadge{background:var(--orange);color:white;padding:.3rem 1rem;font-size:.7rem;font-weight:700;border-radius:20px;display:inline-block;margin-bottom:1rem}
+.pplan{font-size:.9rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
+.pamount{font-size:3rem;font-weight:900;color:var(--orange);margin-bottom:.5rem}
+.pper{font-size:.8rem;color:var(--grey);margin-bottom:2rem}
+.pfeats{list-style:none;text-align:left;margin-bottom:2rem}
+.pfeats li{padding:.5rem 0;font-size:.85rem;color:var(--grey);border-bottom:1px solid #1F1F1F;font-weight:300}
+.pfeats li::before{content:'— ';color:var(--orange)}
+
+.coaches{background:var(--black)}.coach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+.coach{text-align:center}.coach-av{width:80px;height:80px;margin:0 auto 1rem;border-radius:50%;background:var(--card);border:2px solid #222;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.coach-name{font-weight:600;font-size:.9rem;margin-bottom:.2rem}.coach-spec{font-size:.7rem;color:var(--orange);letter-spacing:1px}
+
+.cta{background:var(--dark);text-align:center;padding:5rem 5%;position:relative}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}.cta h2 span{color:var(--orange)}
+.cta p{color:var(--grey);margin-bottom:2rem}
+.cta-info{display:flex;justify-content:center;gap:3rem;margin-top:2rem}
+.ci{text-align:center}.ci-icon{font-size:1.2rem;margin-bottom:.3rem}.ci-val{font-size:.9rem;color:var(--orange)}.ci-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--grey)}
+
+footer{background:var(--black);padding:3rem 5%;text-align:center;border-top:1px solid #1A1A1A}
+.fl{font-size:1.3rem;font-weight:900;margin-bottom:1rem}.fl span{color:var(--orange)}
+.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}
+.flinks a{color:var(--grey);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--orange)}
+.fc{font-size:.7rem;color:#333}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}.phil-values,.price-grid{grid-template-columns:1fr}.coach-grid{grid-template-columns:1fr 1fr}.cta-info{flex-direction:column;gap:1.5rem}.btn-minimal{margin-left:0;margin-top:1rem;display:block}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">SOLO<span>.</span></a><ul class="nav-links"><li><a href="#philosophy">ფილოსოფია</a></li><li><a href="#programs">პროგრამები</a></li><li><a href="#pricing">ფასები</a></li><li><a href="#contact">კონტაქტი</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="hero-content"><p class="hero-tag">Fitness Studio</p><h1>SOLO<span class="dot">.</span></h1><p>ფოკუსი. დისციპლინა. შედეგი. Solo Fitness — მინიმალიზმი მაქსიმალური შედეგისთვის.</p><a href="#pricing" class="btn btn-orange">დაიწყე</a><a href="#programs" class="btn btn-minimal">პროგრამები</a></div></section>
+
+<section class="philosophy" id="philosophy"><div class="phil-wrap reveal"><h2>ნაკლები ხმაური. <span>მეტი შედეგი.</span></h2><p>Solo Fitness — ეს არის მინიმალისტური მიდგომა ფიტნესისადმი. არ გვაქვს ზედმეტი. მხოლოდ ის, რაც შედეგს იძლევა.</p><p>ჩვენ გვწამს, რომ საუკეთესო ვარჯიში არის ის, რომელსაც თანმიმდევრულად აკეთებ. სწორედ ამიტომ შევქმენით სივრცე, სადაც ყურადღება მხოლოდ შენზეა.</p><div class="phil-values"><div class="phil-value"><div class="phil-value-num">01</div><div class="phil-value-text">ფოკუსი — ერთი მიზანი, სრული ყურადღება</div></div><div class="phil-value"><div class="phil-value-num">02</div><div class="phil-value-text">დისციპლინა — თანმიმდევრული ვარჯიში</div></div><div class="phil-value"><div class="phil-value-num">03</div><div class="phil-value-text">შედეგი — მეცნიერულად დაფუძნებული</div></div></div></div></section>
+
+<section class="programs" id="programs"><div class="sh"><p class="sl">პროგრამები</p><h2 class="st">ვარჯიშის მიმართულებები</h2><div class="sln"></div></div><div class="prog-grid"><div class="prog-card reveal"><div class="prog-icon">🏋️</div><div class="prog-name">Strength</div><div class="prog-desc">ძალოვანი პროგრამა — კუნთების აგება და ძალის განვითარება.</div></div><div class="prog-card reveal"><div class="prog-icon">🔥</div><div class="prog-name">HIIT</div><div class="prog-desc">მაღალი ინტენსივობა — ცხიმის წვა და გამძლეობა.</div></div><div class="prog-card reveal"><div class="prog-icon">🧘</div><div class="prog-name">Mobility</div><div class="prog-desc">მოქნილობა და რეკოვერი — სხეულის აღდგენა.</div></div><div class="prog-card reveal"><div class="prog-icon">📋</div><div class="prog-name">Personal</div><div class="prog-desc">ინდივიდუალური — მწვრთნელთან ერთად.</div></div></div></section>
+
+<section class="coaches"><div class="sh"><p class="sl">მწვრთნელები</p><h2 class="st">გუნდი</h2><div class="sln"></div></div><div class="coach-grid"><div class="coach reveal"><div class="coach-av">💪</div><div class="coach-name">ნიკა</div><div class="coach-spec">Strength</div></div><div class="coach reveal"><div class="coach-av">🔥</div><div class="coach-name">ელენე</div><div class="coach-spec">HIIT</div></div><div class="coach reveal"><div class="coach-av">🧘</div><div class="coach-name">სოფო</div><div class="coach-spec">Mobility</div></div><div class="coach reveal"><div class="coach-av">📋</div><div class="coach-name">გიორგი</div><div class="coach-spec">Personal</div></div></div></section>
+
+<section class="pricing" id="pricing"><div class="sh"><p class="sl">გაწევრიანება</p><h2 class="st">აირჩიე გეგმა</h2><div class="sln"></div></div><div class="price-grid"><div class="price-card reveal"><div class="pplan">Solo</div><div class="pamount">₾ 60</div><div class="pper">თვეში</div><ul class="pfeats"><li>სავარჯიშო დარბაზი</li><li>კარდიო ზონა</li><li>საშხაპე</li></ul><a href="#contact" class="btn btn-minimal" style="margin:0;width:100%;text-align:center">არჩევა</a></div><div class="price-card feat reveal"><div class="pbadge">რეკომენდებული</div><div class="pplan">Duo</div><div class="pamount">₾ 95</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველაფერი Solo-ში</li><li>ჯგუფური ვარჯიშები</li><li>საუნა</li><li>1 პერსონალური</li></ul><a href="#contact" class="btn btn-orange" style="margin:0;width:100%;text-align:center">არჩევა</a></div><div class="price-card reveal"><div class="pplan">Elite</div><div class="pamount">₾ 150</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველაფერი Duo-ში</li><li>4 პერსონალური</li><li>კვების გეგმა</li><li>24/7</li></ul><a href="#contact" class="btn btn-minimal" style="margin:0;width:100%;text-align:center">არჩევა</a></div></div></section>
+
+<section class="cta" id="contact"><h2 class="reveal">დაიწყე <span>ახლავე.</span></h2><p class="reveal">პირველი ვარჯიში უფასოა</p><a href="tel:+995555012345" class="btn btn-orange reveal">+995 555 012 345</a><div class="cta-info reveal"><div class="ci"><div class="ci-icon">📍</div><div class="ci-lbl">მისამართი</div><div class="ci-val">თამარ მეფის გამზ. 18</div></div><div class="ci"><div class="ci-icon">🕐</div><div class="ci-lbl">საათები</div><div class="ci-val">07:00 — 22:00</div></div><div class="ci"><div class="ci-icon">📱</div><div class="ci-lbl">Instagram</div><div class="ci-val">@solo.fitness1</div></div></div></section>
+
+<footer><div class="fl">SOLO<span>.</span></div><ul class="flinks"><li><a href="#philosophy">ფილოსოფია</a></li><li><a href="#programs">პროგრამები</a></li><li><a href="https://www.instagram.com/solo.fitness1/" target="_blank">Instagram</a></li></ul><p class="fc">© 2024 Solo Fitness. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Van Gogh Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --deep-blue: #1B2838;
+  --starry-blue: #2C4A6E;
+  --yellow: #E8B931;
+  --amber: #D4943A;
+  --cream: #FEF9EF;
+  --text-dark: #1A1A2E;
+  --text-light: #6B6B7B;
+  --bg-light: #FAFAF5;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', 'Noto Sans Georgian', sans-serif; background: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
+
+.demo-badge { position: fixed; top: 20px; right: -35px; background: var(--deep-blue); color: var(--yellow); padding: 5px 40px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transform: rotate(45deg); z-index: 9999; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s; }
+nav.scrolled { background: rgba(250,250,245,0.95); backdrop-filter: blur(20px); box-shadow: 0 2px 20px rgba(0,0,0,0.05); padding: 0.8rem 5%; }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--deep-blue); text-decoration: none; font-style: italic; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+.nav-links a:hover { color: var(--yellow); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.menu-toggle span { width: 25px; height: 2px; background: var(--text-dark); }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; background: var(--deep-blue); overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; }
+.hero-bg .star { position: absolute; width: 3px; height: 3px; background: var(--yellow); border-radius: 50%; animation: twinkle 3s infinite alternate; }
+.hero-bg .swirl { position: absolute; border: 3px solid rgba(232,185,49,0.1); border-radius: 50%; }
+.hero-content { z-index: 2; padding: 2rem 5%; max-width: 800px; }
+.hero-tag { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--yellow); margin-bottom: 2rem; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 700; color: var(--cream); line-height: 1.05; margin-bottom: 1.5rem; }
+.hero h1 .stroke { -webkit-text-stroke: 1px var(--yellow); color: transparent; font-style: italic; }
+.hero p { font-size: 1.1rem; color: rgba(254,249,239,0.6); line-height: 1.8; max-width: 500px; margin-bottom: 2.5rem; }
+.btn { display: inline-block; padding: 1rem 2.5rem; text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all 0.4s; }
+.btn-gold { background: var(--yellow); color: var(--deep-blue); border: 2px solid var(--yellow); }
+.btn-gold:hover { background: transparent; color: var(--yellow); }
+.btn-ghost { border: 1px solid rgba(254,249,239,0.3); color: var(--cream); margin-left: 1rem; }
+.btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+
+@keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 1; transform: scale(1.5); } }
+
+/* About */
+.about { padding: 7rem 5%; background: var(--bg-light); }
+.about-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-art { position: relative; height: 500px; }
+.art-frame { position: absolute; inset: 0; border: 3px solid var(--deep-blue); border-radius: 4px; }
+.art-fill { position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; background: linear-gradient(135deg, var(--starry-blue), var(--deep-blue)); border-radius: 4px; }
+.art-fill::after { content: '🎨'; position: absolute; font-size: 4rem; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.3; }
+.about-content .label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 1rem; }
+.about-content h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+.about-content p { font-size: 1rem; line-height: 1.9; color: var(--text-light); margin-bottom: 1.2rem; }
+.about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #eee; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--deep-blue); }
+.stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); }
+
+/* Menu */
+.menu-section { padding: 7rem 5%; background: linear-gradient(180deg, var(--deep-blue) 0%, #0F1923 100%); color: var(--cream); }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--yellow); font-weight: 600; margin-bottom: 1rem; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
+.section-line { width: 60px; height: 2px; background: var(--yellow); margin: 0 auto; }
+
+.menu-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.menu-col h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--yellow); margin-bottom: 1.5rem; font-style: italic; }
+.dish { padding: 1rem 0; border-bottom: 1px solid rgba(232,185,49,0.1); }
+.dish-top { display: flex; justify-content: space-between; align-items: baseline; }
+.dish-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+.dish-dots { flex: 1; border-bottom: 1px dotted rgba(254,249,239,0.2); margin: 0 0.5rem; min-width: 20px; }
+.dish-price { color: var(--yellow); font-weight: 600; }
+.dish-desc { font-size: 0.8rem; color: rgba(254,249,239,0.4); margin-top: 0.3rem; }
+
+/* Atmosphere */
+.atmosphere { padding: 7rem 5%; background: var(--cream); }
+.atm-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.atm-card { padding: 2.5rem; background: white; border-radius: 4px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+.atm-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+.atm-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.atm-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 0.8rem; }
+.atm-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+
+/* CTA */
+.cta { padding: 6rem 5%; background: linear-gradient(135deg, var(--starry-blue), var(--deep-blue)); text-align: center; position: relative; overflow: hidden; }
+.cta h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--cream); margin-bottom: 1rem; }
+.cta p { color: rgba(254,249,239,0.6); margin-bottom: 2rem; font-size: 1.1rem; }
+
+/* Footer */
+footer { background: #0A1018; color: var(--cream); padding: 3rem 5%; text-align: center; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--yellow); margin-bottom: 1rem; font-style: italic; }
+.footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-bottom: 2rem; }
+.footer-links a { color: rgba(254,249,239,0.5); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+.footer-links a:hover { color: var(--yellow); }
+.footer-copy { font-size: 0.75rem; color: rgba(254,249,239,0.2); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-light); padding: 2rem 5%; }
+  .about-wrap, .menu-grid { grid-template-columns: 1fr; }
+  .atm-grid { grid-template-columns: 1fr; }
+  .btn-ghost { margin-left: 0; margin-top: 1rem; display: block; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+
+<nav>
+  <a href="#" class="nav-logo">Van Gogh</a>
+  <ul class="nav-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#menu">მენიუ</a></li>
+    <li><a href="#atmosphere">ატმოსფერო</a></li>
+    <li><a href="#reserve">რეზერვაცია</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg" id="starfield"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Fine Dining • Tbilisi</p>
+    <h1>Where Art<br>Meets <span class="stroke">Cuisine</span></h1>
+    <p>ხელოვნება თითოეულ კერძში. Van Gogh რესტორანი — ადგილი, სადაც გემოვნება ფერებს იძენს.</p>
+    <div>
+      <a href="#menu" class="btn btn-gold">მენიუ</a>
+      <a href="#reserve" class="btn btn-ghost">რეზერვაცია</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="about-art reveal">
+      <div class="art-fill"></div>
+      <div class="art-frame"></div>
+    </div>
+    <div class="about-content reveal">
+      <p class="label">ჩვენი ფილოსოფია</p>
+      <h2>ყოველი კერძი — ტილოა</h2>
+      <p>Van Gogh რესტორანში ჩვენ გვწამს, რომ საკვები არის ხელოვნების ფორმა. ისევე როგორც იმპრესიონისტი მხატვრები, ჩვენი შეფ-მზარეული ქმნის შედევრებს ფერების, ტექსტურების და გემოვნებების ჰარმონიით.</p>
+      <p>ყოველი ინგრედიენტი შერჩეულია სიყვარულით, ყოველი კერძი მოყვანილია სრულყოფილებამდე.</p>
+      <div class="about-stats">
+        <div><div class="stat-num">50+</div><div class="stat-label">კერძი</div></div>
+        <div><div class="stat-num">200+</div><div class="stat-label">ღვინო</div></div>
+        <div><div class="stat-num">5★</div><div class="stat-label">რეიტინგი</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="section-header">
+    <p class="section-label">მენიუ</p>
+    <h2 class="section-title" style="color:var(--cream)">გასტრონომიული ნამუშევრები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="menu-grid reveal">
+    <div class="menu-col">
+      <h3>სტარტერები</h3>
+      <div class="dish"><div class="dish-top"><span class="dish-name">ტუნის ტარტარი</span><span class="dish-dots"></span><span class="dish-price">₾ 32</span></div><div class="dish-desc">ავოკადო, სოიის სოუსი, სეზამი</div></div>
+      <div class="dish"><div class="dish-top"><span class="dish-name">ფუა-გრა</span><span class="dish-dots"></span><span class="dish-price">₾ 45</span></div><div class="dish-desc">კარამელიზებული ვაშლი, ბრიოში</div></div>
+      <div class="dish"><div class="dish-top"><span class="dish-name">ცხელი სალათი</span><span class="dish-dots"></span><span class="dish-price">₾ 22</span></div><div class="dish-desc">თხის ყველი, ბალზამიკო, თაფლი</div></div>
+      <div class="dish"><div class="dish-top"><span class="dish-name">სეზონური სუპი</span><span class="dish-dots"></span><span class="dish-price">₾ 18</span></div><div class="dish-desc">შეფის არჩევანი</div></div>
+    </div>
+    <div class="menu-col">
+      <h3>ძირითადი კერძები</h3>
+      <div class="dish"><div class="dish-top"><span class="dish-name">ანტრეკოტი</span><span class="dish-dots"></span><span class="dish-price">₾ 65</span></div><div class="dish-desc">ტრუფელის კარაქი, გრილზე ბოსტნეული</div></div>
+      <div class="dish"><div class="dish-top"><span class="dish-name">ლავრაკი</span><span class="dish-dots"></span><span class="dish-price">₾ 48</span></div><div class="dish-desc">ლიმონი, კაპარი, ბალახეული</div></div>
+      <div class="dish"><div class="dish-top"><span class="dish-name">იხვის მკერდი</span><span class="dish-dots"></span><span class="dish-price">₾ 52</span></div><div class="dish-desc">ფორთოხლის სოუსი, პურე</div></div>
+      <div class="dish"><div class="dish-top"><span class="dish-name">რიზოტო</span><span class="dish-dots"></span><span class="dish-price">₾ 35</span></div><div class="dish-desc">სოკო, პარმეზანი, ტრუფელი</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="atmosphere" id="atmosphere">
+  <div class="section-header">
+    <p class="section-label" style="color:var(--amber)">გამოცდილება</p>
+    <h2 class="section-title">ატმოსფერო</h2>
+    <div class="section-line" style="background:var(--amber)"></div>
+  </div>
+  <div class="atm-grid">
+    <div class="atm-card reveal"><div class="atm-icon">🎨</div><h3>არტ ინტერიერი</h3><p>იმპრესიონისტული ნამუშევრებით გაფორმებული სივრცე, რომელიც Van Gogh-ის სულისკვეთებას ასახავს.</p></div>
+    <div class="atm-card reveal"><div class="atm-icon">🎶</div><h3>ცოცხალი მუსიკა</h3><p>პარასკევს და შაბათს ცოცხალი ჯაზი ქმნის სრულყოფილ საღამოს ატმოსფეროს.</p></div>
+    <div class="atm-card reveal"><div class="atm-icon">🌙</div><h3>ვარსკვლავიანი ტერასა</h3><p>ღია ტერასა თბილისის ღამის ხედით — სადაც ვარსკვლავიანი ღამე ხდება თქვენი ფონი.</p></div>
+  </div>
+</section>
+
+<section class="cta" id="reserve">
+  <h2 class="reveal">დაჯავშნეთ სამხატვრო საღამო</h2>
+  <p class="reveal">დაგვირეკეთ ან მოგვწერეთ რეზერვაციისთვის</p>
+  <a href="tel:+995555234567" class="btn btn-gold reveal">+995 555 234 567</a>
+</section>
+
+<footer>
+  <div class="footer-logo">Van Gogh</div>
+  <ul class="footer-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#menu">მენიუ</a></li>
+    <li><a href="#atmosphere">ატმოსფერო</a></li>
+    <li><a href="#reserve">რეზერვაცია</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 Van Gogh Restaurant. Tbilisi. | Demo Version</p>
+</footer>
+
+<script>
+// Stars
+const starfield = document.getElementById('starfield');
+for (let i = 0; i < 80; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*3}s;animation-duration:${2+Math.random()*3}s;width:${1+Math.random()*3}px;height:${1+Math.random()*3}px`;
+  starfield.appendChild(star);
+}
+// Swirls
+for (let i = 0; i < 5; i++) {
+  const swirl = document.createElement('div');
+  swirl.className = 'swirl';
+  const size = 100 + Math.random() * 300;
+  swirl.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px`;
+  starfield.appendChild(swirl);
+}
+// Scroll
+window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50); });
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

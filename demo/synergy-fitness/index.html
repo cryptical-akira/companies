@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synergy Fitness Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#08081A;--dark:#0E0E24;--card:#161635;--purple:#7B2FFF;--blue:#2F6FFF;--gradient:linear-gradient(135deg,#7B2FFF,#2F6FFF);--white:#F0F0FF;--muted:#7070A0}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--purple);color:white;padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+.new-badge{position:fixed;top:80px;left:20px;background:var(--gradient);color:white;padding:.5rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:2px;border-radius:20px;z-index:9999;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(8,8,26,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-size:1.5rem;font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--purple)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:2px;background:var(--white)}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(123,47,255,.1),transparent 50%),radial-gradient(ellipse at 70% 50%,rgba(47,111,255,.1),transparent 50%)}
+.geo-shape{position:absolute;border:1px solid rgba(123,47,255,.08);border-radius:50%}
+.geo-shape:nth-child(1){width:400px;height:400px;top:10%;left:-100px}.geo-shape:nth-child(2){width:300px;height:300px;bottom:10%;right:-50px}.geo-shape:nth-child(3){width:200px;height:200px;top:30%;right:20%}
+.hero-content{z-index:2}.hero-tag{font-size:.75rem;letter-spacing:6px;text-transform:uppercase;color:var(--purple);margin-bottom:2rem;font-weight:600}
+.hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{font-size:1rem;-webkit-text-fill-color:var(--white);background:none;font-weight:300}
+.hero p{color:var(--muted);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .4s;border-radius:30px}
+.btn-grad{background:var(--gradient);color:white;border:none;box-shadow:0 5px 25px rgba(123,47,255,.3)}.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(123,47,255,.4)}
+
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--purple);margin-bottom:.5rem;font-weight:600}
+.st{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem}.sln{width:60px;height:3px;background:var(--gradient);margin:0 auto;border-radius:2px}
+
+.about{background:var(--dark)}.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-visual{aspect-ratio:1;background:var(--card);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid rgba(123,47,255,.1);position:relative;overflow:hidden}
+.about-visual::before{content:'';position:absolute;width:200px;height:200px;background:var(--gradient);border-radius:50%;filter:blur(80px);opacity:.2}
+.about-text h2{font-size:2.2rem;font-weight:800;margin-bottom:1.5rem}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-weight:300}
+
+.programs{background:var(--black)}.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.prog-card{background:var(--card);border:1px solid rgba(123,47,255,.06);border-radius:12px;padding:2rem;transition:all .4s}
+.prog-card:hover{border-color:rgba(123,47,255,.2);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.prog-icon{font-size:2rem;margin-bottom:1rem}.prog-name{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.prog-desc{font-size:.85rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+.pricing{background:var(--dark)}.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid rgba(123,47,255,.06);border-radius:12px;padding:2.5rem;text-align:center;transition:all .4s}
+.price-card.feat{border-color:var(--purple);box-shadow:0 0 40px rgba(123,47,255,.1)}
+.price-card.feat .pbadge{background:var(--gradient);color:white;padding:.3rem 1rem;font-size:.7rem;font-weight:700;border-radius:20px;display:inline-block;margin-bottom:1rem}
+.pplan{font-size:.9rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
+.pamount{font-size:3rem;font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem}
+.pper{font-size:.8rem;color:var(--muted);margin-bottom:2rem}
+.pfeats{list-style:none;text-align:left;margin-bottom:2rem}
+.pfeats li{padding:.5rem 0;font-size:.85rem;color:var(--muted);border-bottom:1px solid rgba(123,47,255,.04);font-weight:300}.pfeats li::before{content:'✦ ';color:var(--purple)}
+
+.cta{background:var(--black);text-align:center;padding:5rem 5%;position:relative}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(123,47,255,.06),transparent 60%)}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem;position:relative}.cta p{color:var(--muted);margin-bottom:2rem;position:relative}
+.cta-info{display:flex;justify-content:center;gap:3rem;margin-top:2rem;position:relative}
+.ci{text-align:center}.ci-icon{font-size:1.2rem;margin-bottom:.3rem}.ci-val{font-size:.9rem;color:var(--purple)}.ci-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+
+footer{background:var(--dark);padding:3rem 5%;text-align:center;border-top:1px solid rgba(123,47,255,.06)}
+.fl{font-size:1.3rem;font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}
+.flinks a{color:var(--muted);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--purple)}
+.fc{font-size:.7rem;color:rgba(123,47,255,.15)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}.about-grid,.price-grid{grid-template-columns:1fr}.cta-info{flex-direction:column;gap:1.5rem}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<div class="new-badge">NEW OPENING</div>
+<nav><a href="#" class="nav-logo">SYNERGY</a><ul class="nav-links"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#programs">პროგრამები</a></li><li><a href="#pricing">ფასები</a></li><li><a href="#contact">კონტაქტი</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="geo-shape"></div><div class="geo-shape"></div><div class="geo-shape"></div><div class="hero-content"><p class="hero-tag">New Fitness Experience</p><h1>SYNERGY<br><span class="sub">Fitness Club</span></h1><p>ენერგიის სინთეზი. Synergy Fitness Club — ახალი ფიტნეს გამოცდილება თბილისში. შეუერთდი ჩვენს კლუბს.</p><a href="#pricing" class="btn btn-grad">გაწევრიანდი</a></div></section>
+
+<section class="about" id="about"><div class="about-grid"><div class="about-visual reveal">⚡</div><div class="about-text reveal"><h2>ენერგია × თანამშრომლობა = სინერგია</h2><p>Synergy Fitness Club — ახლად გახსნილი, თანამედროვე ფიტნეს სივრცე. ჩვენ შევქმენით ადგილი, სადაც ყველა წევრის ენერგია ერთიანდება ერთ ძლიერ ძალად.</p><p>უახლესი აღჭურვილობა, ინოვაციური პროგრამები და ენთუზიასტი გუნდი — მზად ვართ შენთვის.</p></div></div></section>
+
+<section class="programs" id="programs"><div class="sh"><p class="sl">პროგრამები</p><h2 class="st">ვარჯიშის მიმართულებები</h2><div class="sln"></div></div><div class="prog-grid"><div class="prog-card reveal"><div class="prog-icon">🏋️</div><div class="prog-name">Power Zone</div><div class="prog-desc">ძალოვანი ვარჯიში თანამედროვე აღჭურვილობით.</div></div><div class="prog-card reveal"><div class="prog-icon">🔥</div><div class="prog-name">Synergy HIIT</div><div class="prog-desc">ჯგუფური მაღალი ინტენსივობის ვარჯიშები.</div></div><div class="prog-card reveal"><div class="prog-icon">🧘</div><div class="prog-name">Flow</div><div class="prog-desc">იოგა, პილატესი და მოქნილობის პროგრამა.</div></div><div class="prog-card reveal"><div class="prog-icon">💫</div><div class="prog-name">Personal</div><div class="prog-desc">ინდივიდუალური მწვრთნელთან ერთად.</div></div></div></section>
+
+<section class="pricing" id="pricing"><div class="sh"><p class="sl">გაწევრიანება</p><h2 class="st">გახსნის სპეციალური ფასები</h2><div class="sln"></div></div><div class="price-grid"><div class="price-card reveal"><div class="pplan">Starter</div><div class="pamount">₾ 65</div><div class="pper">თვეში</div><ul class="pfeats"><li>სავარჯიშო დარბაზი</li><li>კარდიო ზონა</li><li>საშხაპე & ლოკერი</li></ul><a href="#contact" class="btn btn-grad" style="width:100%;text-align:center;background:transparent;border:1px solid var(--purple);color:var(--purple);box-shadow:none">არჩევა</a></div><div class="price-card feat reveal"><div class="pbadge">BEST VALUE</div><div class="pplan">Synergy</div><div class="pamount">₾ 100</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველაფერი Starter-ში</li><li>ჯგუფური ვარჯიშები</li><li>საუნა</li><li>2 პერსონალური</li></ul><a href="#contact" class="btn btn-grad" style="width:100%;text-align:center">არჩევა</a></div><div class="price-card reveal"><div class="pplan">Unlimited</div><div class="pamount">₾ 160</div><div class="pper">თვეში</div><ul class="pfeats"><li>ყველაფერი Synergy-ში</li><li>4 პერსონალური</li><li>კვების გეგმა</li><li>24/7 წვდომა</li></ul><a href="#contact" class="btn btn-grad" style="width:100%;text-align:center;background:transparent;border:1px solid var(--purple);color:var(--purple);box-shadow:none">არჩევა</a></div></div></section>
+
+<section class="cta" id="contact"><h2 class="reveal">შეუერთდი სინერგიას</h2><p class="reveal">გახსნის აქცია — პირველი თვე 50% ფასდაკლებით</p><a href="tel:+995555234567" class="btn btn-grad reveal">+995 555 234 567</a><div class="cta-info reveal"><div class="ci"><div class="ci-icon">📍</div><div class="ci-lbl">მისამართი</div><div class="ci-val">საბურთალო, თბილისი</div></div><div class="ci"><div class="ci-icon">🕐</div><div class="ci-lbl">საათები</div><div class="ci-val">07:00 — 23:00</div></div><div class="ci"><div class="ci-icon">📱</div><div class="ci-lbl">Instagram</div><div class="ci-val">@synergy_fitness_club_geo</div></div></div></section>
+
+<footer><div class="fl">SYNERGY</div><ul class="flinks"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#programs">პროგრამები</a></li><li><a href="https://www.instagram.com/synergy_fitness_club_geo/" target="_blank">Instagram</a></li></ul><p class="fc">© 2024 Synergy Fitness Club. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

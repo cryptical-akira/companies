@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partizan Barbershop</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;500;600;700;800&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --olive: #4A5A2B;
+  --olive-dark: #3A4A1E;
+  --khaki: #8B8450;
+  --sand: #C4B68A;
+  --dark: #1A1C16;
+  --darker: #12140E;
+  --card: #22241C;
+  --cream: #E8E2D0;
+  --text-muted: #7A7868;
+  --red: #8B3030;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', 'Noto Sans Georgian', sans-serif; background: var(--darker); color: var(--cream); overflow-x: hidden; }
+
+.demo-badge { position: fixed; top: 20px; right: -35px; background: var(--olive); color: var(--cream); padding: 5px 40px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transform: rotate(45deg); z-index: 9999; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s; }
+nav.scrolled { background: rgba(18,20,14,0.95); backdrop-filter: blur(20px); }
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--sand); text-decoration: none; letter-spacing: 5px; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--cream); font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--sand); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.menu-toggle span { width: 25px; height: 2px; background: var(--cream); }
+
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(74,90,43,0.03) 2px, rgba(74,90,43,0.03) 4px); }
+.hero-cross { position: absolute; width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.hero-cross::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: rgba(196,182,138,0.08); }
+.hero-cross::after { content: ''; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 100%; height: 2px; background: rgba(196,182,138,0.08); }
+.hero-content { z-index: 2; }
+.hero-tag { font-family: 'Outfit'; font-size: 0.7rem; letter-spacing: 8px; text-transform: uppercase; color: var(--olive); font-weight: 700; margin-bottom: 2rem; padding: 0.5rem 1.5rem; border: 1px solid var(--olive); display: inline-block; }
+.hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 12vw, 10rem); letter-spacing: 10px; line-height: 0.9; margin-bottom: 0.5rem; }
+.hero h1 .sub { font-family: 'Outfit'; font-size: 0.15em; letter-spacing: 8px; font-weight: 300; display: block; color: var(--sand); margin-top: 0.5rem; }
+.hero p { color: var(--text-muted); max-width: 450px; margin: 1.5rem auto 2.5rem; line-height: 1.8; font-weight: 300; }
+.btn { display: inline-block; padding: 1rem 2.5rem; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; transition: all 0.4s; }
+.btn-military { background: var(--olive); color: var(--cream); border: 2px solid var(--olive); }
+.btn-military:hover { background: transparent; }
+
+.mission { padding: 7rem 5%; background: var(--dark); }
+.mission-wrap { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.mission-visual { aspect-ratio: 1; background: linear-gradient(135deg, var(--olive-dark), var(--card)); border: 1px solid rgba(196,182,138,0.08); display: flex; align-items: center; justify-content: center; position: relative; }
+.mission-visual::before { content: '⚔'; font-size: 5rem; opacity: 0.15; }
+.mission-visual .corner { position: absolute; width: 20px; height: 20px; border-color: var(--sand); border-style: solid; }
+.mission-visual .corner.tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+.mission-visual .corner.tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+.mission-visual .corner.bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+.mission-visual .corner.br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+.mission-text .label { font-family: 'Bebas Neue'; font-size: 1rem; letter-spacing: 5px; color: var(--olive); margin-bottom: 1rem; }
+.mission-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 3px; margin-bottom: 1.5rem; }
+.mission-text p { color: var(--text-muted); line-height: 1.9; margin-bottom: 1rem; }
+.mission-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.stat { text-align: center; padding: 1rem; background: var(--card); border: 1px solid rgba(196,182,138,0.05); }
+.stat-num { font-family: 'Bebas Neue'; font-size: 2.5rem; color: var(--sand); }
+.stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+
+.services { padding: 7rem 5%; background: var(--darker); }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label { font-family: 'Bebas Neue'; font-size: 1rem; letter-spacing: 5px; color: var(--olive); margin-bottom: 0.5rem; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 3px; margin-bottom: 1rem; }
+.section-line { width: 60px; height: 3px; background: var(--olive); margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+.service-card { background: var(--card); border: 1px solid rgba(196,182,138,0.05); padding: 2rem; transition: all 0.4s; position: relative; }
+.service-card:hover { border-color: rgba(74,90,43,0.3); }
+.service-card .number { font-family: 'Bebas Neue'; font-size: 3rem; color: rgba(196,182,138,0.06); position: absolute; top: 10px; right: 15px; }
+.service-card h3 { font-family: 'Bebas Neue'; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
+.service-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.service-card .bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(196,182,138,0.05); padding-top: 1rem; }
+.service-card .price { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--sand); }
+.service-card .time { font-size: 0.75rem; color: var(--text-muted); }
+
+.crew { padding: 7rem 5%; background: var(--dark); }
+.crew-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
+.crew-member { text-align: center; padding: 2rem; background: var(--card); border: 1px solid rgba(196,182,138,0.05); }
+.crew-avatar { width: 100px; height: 100px; margin: 0 auto 1.5rem; background: var(--olive-dark); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+.crew-name { font-family: 'Bebas Neue'; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 0.3rem; }
+.crew-rank { font-size: 0.75rem; color: var(--olive); letter-spacing: 2px; text-transform: uppercase; }
+
+.booking { padding: 6rem 5%; background: var(--darker); text-align: center; border-top: 1px solid rgba(196,182,138,0.05); }
+.booking h2 { font-family: 'Bebas Neue'; font-size: 3rem; letter-spacing: 3px; margin-bottom: 1rem; }
+.booking p { color: var(--text-muted); margin-bottom: 2rem; }
+.booking-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; }
+.booking-item { text-align: center; }
+.booking-item-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.booking-item-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 0.3rem; font-weight: 700; }
+.booking-item-value { font-size: 0.9rem; color: var(--sand); }
+
+footer { background: var(--dark); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(196,182,138,0.05); }
+.footer-logo { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--sand); letter-spacing: 5px; margin-bottom: 1rem; }
+.footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-bottom: 1.5rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 1px; }
+.footer-links a:hover { color: var(--sand); }
+.footer-copy { font-size: 0.7rem; color: rgba(196,182,138,0.15); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--darker); padding: 2rem 5%; }
+  .mission-wrap { grid-template-columns: 1fr; }
+  .crew-grid { grid-template-columns: 1fr; }
+  .booking-info { flex-direction: column; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav>
+  <a href="#" class="nav-logo">PARTIZAN</a>
+  <ul class="nav-links">
+    <li><a href="#mission">მისია</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="#crew">გუნდი</a></li>
+    <li><a href="#booking">ჩაწერა</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-cross"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Barbershop • Tbilisi</div>
+    <h1>PARTIZAN<span class="sub">Barbershop</span></h1>
+    <p>ძლიერი სტილი ძლიერი მამაკაცებისთვის. Partizan — სადაც ხასიათი ფორმას იღებს.</p>
+    <a href="#services" class="btn btn-military">სერვისები</a>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="mission-wrap">
+    <div class="mission-visual reveal">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    </div>
+    <div class="mission-text reveal">
+      <p class="label">MISSION</p>
+      <h2>ჩვენი მისია</h2>
+      <p>Partizan Barbershop შეიქმნა იმ მამაკაცებისთვის, ვინც აფასებს ხარისხს, სიძლიერეს და სტილს. ჩვენი ბარბერები არიან გამოცდილი მეომრები, რომლებიც ყოველ ჭრას ზუსტად და პროფესიონალურად ასრულებენ.</p>
+      <p>ინდუსტრიული ესთეტიკა, ხარისხიანი პროდუქცია და უკომპრომისო სერვისი — ეს არის Partizan.</p>
+      <div class="mission-stats">
+        <div class="stat"><div class="stat-num">2K+</div><div class="stat-label">მიმდევარი</div></div>
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">წლის გამოცდილება</div></div>
+        <div class="stat"><div class="stat-num">98%</div><div class="stat-label">კმაყოფილება</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header">
+    <p class="section-label">SERVICES</p>
+    <h2 class="section-title">სერვისები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal"><div class="number">01</div><h3>HAIRCUT</h3><p>პროფესიონალური თმის შეჭრა თქვენს სტილზე მორგებული.</p><div class="bottom"><span class="price">₾ 30</span><span class="time">40 წთ</span></div></div>
+    <div class="service-card reveal"><div class="number">02</div><h3>BEARD TRIM</h3><p>წვერის ფორმირება და მოვლა.</p><div class="bottom"><span class="price">₾ 20</span><span class="time">25 წთ</span></div></div>
+    <div class="service-card reveal"><div class="number">03</div><h3>SHAVE</h3><p>კლასიკური გაპარსვა ცხელი პირსახოცით.</p><div class="bottom"><span class="price">₾ 25</span><span class="time">30 წთ</span></div></div>
+    <div class="service-card reveal"><div class="number">04</div><h3>COMBO</h3><p>თმა + წვერი — სრული პაკეტი.</p><div class="bottom"><span class="price">₾ 45</span><span class="time">60 წთ</span></div></div>
+  </div>
+</section>
+
+<section class="crew" id="crew">
+  <div class="section-header">
+    <p class="section-label">CREW</p>
+    <h2 class="section-title">ჩვენი გუნდი</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="crew-grid">
+    <div class="crew-member reveal"><div class="crew-avatar">💪</div><div class="crew-name">TORNIKE</div><div class="crew-rank">Commander</div></div>
+    <div class="crew-member reveal"><div class="crew-avatar">💪</div><div class="crew-name">LEVAN</div><div class="crew-rank">Sergeant</div></div>
+    <div class="crew-member reveal"><div class="crew-avatar">💪</div><div class="crew-name">BEKA</div><div class="crew-rank">Recruit</div></div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2 class="reveal">ჩაეწერე</h2>
+  <p class="reveal">შეარჩიე დრო და ბარბერი</p>
+  <a href="tel:+995555678901" class="btn btn-military reveal">+995 555 678 901</a>
+  <div class="booking-info reveal">
+    <div class="booking-item"><div class="booking-item-icon">📍</div><div class="booking-item-label">Location</div><div class="booking-item-value">ვაჟა-ფშაველას გამზ. 42</div></div>
+    <div class="booking-item"><div class="booking-item-icon">🕐</div><div class="booking-item-label">Hours</div><div class="booking-item-value">10:00 — 21:00</div></div>
+    <div class="booking-item"><div class="booking-item-icon">📱</div><div class="booking-item-label">Facebook</div><div class="booking-item-value">Partizan Barbershop</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">PARTIZAN</div>
+  <ul class="footer-links">
+    <li><a href="#mission">მისია</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="https://www.facebook.com/partizanbarbershop/" target="_blank">Facebook</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 Partizan Barbershop. Tbilisi. | Demo Version</p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50); });
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Websites</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        .category {
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+        .category h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+        }
+        a.card {
+            display: block;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 10px;
+            padding: 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        a.card:hover {
+            border-color: #444;
+            transform: translateY(-2px);
+        }
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .card-type {
+            font-size: 0.85rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Company Demos</h1>
+    <p class="subtitle">Website demos for local businesses</p>
+
+    <div class="category">
+        <h2>Restaurants</h2>
+        <div class="grid">
+            <a class="card" href="demo/47-restaurant/">
+                <div class="card-name">47 Restaurant</div>
+                <div class="card-type">Restaurant</div>
+            </a>
+            <a class="card" href="demo/bistro-conili/">
+                <div class="card-name">Bistro Conili</div>
+                <div class="card-type">Restaurant</div>
+            </a>
+            <a class="card" href="demo/van-gogh/">
+                <div class="card-name">Van Gogh</div>
+                <div class="card-type">Restaurant</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2>Barbershops</h2>
+        <div class="grid">
+            <a class="card" href="demo/mafia-barber/">
+                <div class="card-name">Mafia Barbershop</div>
+                <div class="card-type">Barbershop</div>
+            </a>
+            <a class="card" href="demo/gentleman-barbershop/">
+                <div class="card-name">Gentleman Barbershop</div>
+                <div class="card-type">Barbershop</div>
+            </a>
+            <a class="card" href="demo/camora-barbershop/">
+                <div class="card-name">Camora Barbershop</div>
+                <div class="card-type">Barbershop</div>
+            </a>
+            <a class="card" href="demo/partizan-barbershop/">
+                <div class="card-name">Partizan Barbershop</div>
+                <div class="card-type">Barbershop</div>
+            </a>
+            <a class="card" href="demo/joker-barbershop/">
+                <div class="card-name">Joker Barbershop</div>
+                <div class="card-type">Barbershop</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2>Fitness</h2>
+        <div class="grid">
+            <a class="card" href="demo/aspria-fitness/">
+                <div class="card-name">Aspria Fitness</div>
+                <div class="card-type">Gym</div>
+            </a>
+            <a class="card" href="demo/eco-fitness/">
+                <div class="card-name">Eco Fitness</div>
+                <div class="card-type">Gym</div>
+            </a>
+            <a class="card" href="demo/myfitness/">
+                <div class="card-name">MyFitness</div>
+                <div class="card-type">Gym</div>
+            </a>
+            <a class="card" href="demo/pro-fitness/">
+                <div class="card-name">Pro Fitness</div>
+                <div class="card-type">Gym</div>
+            </a>
+            <a class="card" href="demo/solo-fitness/">
+                <div class="card-name">Solo Fitness</div>
+                <div class="card-type">Gym</div>
+            </a>
+            <a class="card" href="demo/synergy-fitness/">
+                <div class="card-name">Synergy Fitness Club</div>
+                <div class="card-type">Gym</div>
+            </a>
+            <a class="card" href="demo/vallhallaecho-fitness/">
+                <div class="card-name">Vallhallaecho Fitness</div>
+                <div class="card-type">Gym</div>
+            </a>
+            <a class="card" href="demo/reforma/">
+                <div class="card-name">Reforma</div>
+                <div class="card-type">Fitness</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

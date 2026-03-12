@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>47 Restaurant | Tbilisi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@200;300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0A0A0A;
+  --dark: #141414;
+  --card: #1A1A1A;
+  --gold: #C8A96E;
+  --gold-light: #D4BA82;
+  --cream: #F5F0E8;
+  --text-secondary: #8B8580;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', 'Noto Sans Georgian', sans-serif; background: var(--black); color: var(--cream); overflow-x: hidden; }
+
+.demo-badge { position: fixed; top: 20px; right: -35px; background: var(--gold); color: var(--black); padding: 5px 40px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transform: rotate(45deg); z-index: 9999; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s; }
+nav.scrolled { background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold); text-decoration: none; }
+.nav-logo span { font-size: 0.7em; font-weight: 300; color: var(--text-secondary); margin-left: 0.3rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--cream); font-size: 0.85rem; font-weight: 400; letter-spacing: 1px; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.menu-toggle span { width: 25px; height: 2px; background: var(--cream); }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; background: var(--black); overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(200,169,110,0.08) 0%, transparent 70%); }
+.hero-num { font-family: 'Playfair Display', serif; font-size: clamp(8rem, 25vw, 20rem); font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(200,169,110,0.15); position: absolute; z-index: 0; }
+.hero-content { z-index: 2; }
+.hero-tag { font-size: 0.8rem; letter-spacing: 8px; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.5rem; }
+.hero h1 .gold { color: var(--gold); font-style: italic; }
+.hero p { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8; }
+.btn { display: inline-block; padding: 1rem 2.5rem; text-decoration: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: all 0.4s; }
+.btn-gold { background: var(--gold); color: var(--black); border: 2px solid var(--gold); }
+.btn-gold:hover { background: transparent; color: var(--gold); }
+.btn-ghost { border: 1px solid rgba(200,169,110,0.3); color: var(--gold); margin-left: 1rem; }
+.btn-ghost:hover { background: var(--gold); color: var(--black); }
+
+/* Story */
+.story { padding: 7rem 5%; background: var(--dark); }
+.story-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.story-visual { position: relative; }
+.story-box { aspect-ratio: 3/4; background: linear-gradient(135deg, var(--card), #222); border-radius: 2px; position: relative; overflow: hidden; }
+.story-box::before { content: '47'; position: absolute; font-family: 'Playfair Display', serif; font-size: 10rem; font-weight: 900; color: rgba(200,169,110,0.06); bottom: -20px; right: -10px; }
+.story-accent { position: absolute; bottom: -20px; left: -20px; width: 150px; height: 150px; border: 2px solid var(--gold); opacity: 0.3; }
+.story-content .label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.story-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+.story-content p { font-size: 1rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.2rem; }
+.story-divider { width: 40px; height: 2px; background: var(--gold); margin: 2rem 0; }
+
+/* Menu Preview */
+.menu-preview { padding: 7rem 5%; background: var(--black); }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+.section-line { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
+
+.menu-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+.menu-card { background: var(--card); padding: 2.5rem; border-radius: 2px; border: 1px solid rgba(200,169,110,0.1); transition: all 0.4s; position: relative; overflow: hidden; }
+.menu-card:hover { border-color: rgba(200,169,110,0.3); transform: translateY(-5px); }
+.menu-card-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+.menu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--gold); }
+.menu-card .dish { padding: 0.7rem 0; border-bottom: 1px solid rgba(200,169,110,0.08); display: flex; justify-content: space-between; }
+.dish-name { font-size: 0.9rem; }
+.dish-price { color: var(--gold); font-weight: 500; font-size: 0.9rem; }
+
+/* Chef */
+.chef { padding: 7rem 5%; background: var(--dark); }
+.chef-wrap { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 4rem; align-items: center; }
+.chef-photo { aspect-ratio: 3/4; background: linear-gradient(135deg, var(--card), #252525); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+.chef-info .label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.chef-info h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+.chef-info p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+.chef-awards { display: flex; gap: 1.5rem; margin-top: 2rem; }
+.award { text-align: center; padding: 1rem; background: var(--card); border-radius: 2px; min-width: 100px; }
+.award-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.award-text { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); }
+
+/* Reservation */
+.reservation { padding: 6rem 5%; background: linear-gradient(135deg, #1A1510 0%, var(--black) 100%); text-align: center; position: relative; }
+.reservation::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(200,169,110,0.05) 0%, transparent 60%); }
+.reservation h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; position: relative; }
+.reservation p { color: var(--text-secondary); margin-bottom: 2rem; position: relative; }
+.res-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2.5rem; position: relative; }
+.res-item { text-align: center; }
+.res-item-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.res-item-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); margin-bottom: 0.3rem; }
+.res-item-value { font-size: 0.95rem; color: var(--gold); }
+
+footer { background: var(--dark); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(200,169,110,0.08); }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
+.footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-bottom: 2rem; }
+.footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.7rem; color: rgba(200,169,110,0.2); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--black); padding: 2rem 5%; }
+  .story-wrap, .chef-wrap { grid-template-columns: 1fr; }
+  .menu-cards { grid-template-columns: 1fr; }
+  .res-info { flex-direction: column; gap: 1.5rem; }
+  .btn-ghost { margin-left: 0; margin-top: 1rem; }
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+
+<nav>
+  <a href="#" class="nav-logo">47<span>restaurant</span></a>
+  <ul class="nav-links">
+    <li><a href="#story">ისტორია</a></li>
+    <li><a href="#menu">მენიუ</a></li>
+    <li><a href="#chef">შეფი</a></li>
+    <li><a href="#reserve">რეზერვაცია</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-num">47</div>
+  <div class="hero-content">
+    <p class="hero-tag">Exclusive Dining</p>
+    <h1>სადაც ყოველი<br><span class="gold">კერძი მოგვითხრობს</span></h1>
+    <p>47 Restaurant — თბილისის გულში, სადაც გასტრონომია ხდება ხელოვნება და ყოველი სტუმარი განსაკუთრებულია.</p>
+    <a href="#menu" class="btn btn-gold">მენიუ</a>
+    <a href="#reserve" class="btn btn-ghost">დაჯავშნე</a>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="story-wrap">
+    <div class="story-visual reveal">
+      <div class="story-box"></div>
+      <div class="story-accent"></div>
+    </div>
+    <div class="story-content reveal">
+      <p class="label">ჩვენი ისტორია</p>
+      <h2>ნომერ 47 — მეტი ვიდრე რესტორანი</h2>
+      <p>ყოველი დიდი ისტორია იწყება ერთი მისამართით. ჩვენთვის ეს იყო ქუჩის ნომერი 47, სადაც 2020 წელს გაიხსნა კარი თბილისის ერთ-ერთი ყველაზე ამბიციური კულინარიული პროექტისთვის.</p>
+      <div class="story-divider"></div>
+      <p>დღეს 47 Restaurant არის ადგილი, სადაც ტრადიციული ქართული რეცეპტები თანამედროვე ტექნიკას ხვდება, სადაც ყოველი ინგრედიენტი მოგვითხრობს მიწის, ზღვის და მზის ისტორიას.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu-preview" id="menu">
+  <div class="section-header">
+    <p class="section-label">მენიუ</p>
+    <h2 class="section-title">კულინარიული შედევრები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="menu-cards">
+    <div class="menu-card reveal">
+      <div class="menu-card-icon">🥂</div>
+      <h3>სტარტერები</h3>
+      <div class="dish"><span class="dish-name">ტარტარი 47</span><span class="dish-price">₾ 28</span></div>
+      <div class="dish"><span class="dish-name">ბურატა</span><span class="dish-price">₾ 26</span></div>
+      <div class="dish"><span class="dish-name">კრევეტები</span><span class="dish-price">₾ 34</span></div>
+      <div class="dish"><span class="dish-name">ფუა-გრა</span><span class="dish-price">₾ 42</span></div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="menu-card-icon">🍖</div>
+      <h3>ძირითადი</h3>
+      <div class="dish"><span class="dish-name">ვაგიუ სტეიკი</span><span class="dish-price">₾ 95</span></div>
+      <div class="dish"><span class="dish-name">ლობსტერი</span><span class="dish-price">₾ 78</span></div>
+      <div class="dish"><span class="dish-name">ბატკნის კარე</span><span class="dish-price">₾ 55</span></div>
+      <div class="dish"><span class="dish-name">ორაგული</span><span class="dish-price">₾ 48</span></div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="menu-card-icon">🍰</div>
+      <h3>დესერტი</h3>
+      <div class="dish"><span class="dish-name">ფონდანი</span><span class="dish-price">₾ 22</span></div>
+      <div class="dish"><span class="dish-name">კრემ-ბრულე</span><span class="dish-price">₾ 18</span></div>
+      <div class="dish"><span class="dish-name">ტირამისუ 47</span><span class="dish-price">₾ 20</span></div>
+      <div class="dish"><span class="dish-name">სორბეტი</span><span class="dish-price">₾ 14</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="chef" id="chef">
+  <div class="chef-wrap">
+    <div class="chef-photo reveal">👨‍🍳</div>
+    <div class="chef-info reveal">
+      <p class="label">შეფ-მზარეული</p>
+      <h2>ხელოვნება თითოეულ თეფშზე</h2>
+      <p>ჩვენი შეფ-მზარეული 15 წელზე მეტი გამოცდილებით, ევროპის წამყვან რესტორნებში მუშაობის შემდეგ, ქმნის უნიკალურ კერძებს, რომლებიც ქართულ ტრადიციებს თანამედროვე გასტრონომიასთან აერთიანებს.</p>
+      <div class="chef-awards">
+        <div class="award"><div class="award-icon">⭐</div><div class="award-text">15+ წელი</div></div>
+        <div class="award"><div class="award-icon">🏆</div><div class="award-text">ჯილდოები</div></div>
+        <div class="award"><div class="award-icon">🌍</div><div class="award-text">საერთაშორისო</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reservation" id="reserve">
+  <h2 class="reveal">რეზერვაცია</h2>
+  <p class="reveal">განსაკუთრებული საღამოსთვის დაჯავშნეთ მაგიდა</p>
+  <a href="tel:+995555345678" class="btn btn-gold reveal">დაჯავშნე ახლავე</a>
+  <div class="res-info reveal">
+    <div class="res-item"><div class="res-item-icon">📍</div><div class="res-item-label">მისამართი</div><div class="res-item-value">რუსთაველის გამზ. 47</div></div>
+    <div class="res-item"><div class="res-item-icon">📞</div><div class="res-item-label">ტელეფონი</div><div class="res-item-value">+995 555 345 678</div></div>
+    <div class="res-item"><div class="res-item-icon">🕐</div><div class="res-item-label">საათები</div><div class="res-item-value">12:00 — 00:00</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">47</div>
+  <ul class="footer-links">
+    <li><a href="#story">ისტორია</a></li>
+    <li><a href="#menu">მენიუ</a></li>
+    <li><a href="#chef">შეფი</a></li>
+    <li><a href="#reserve">რეზერვაცია</a></li>
+    <li><a href="https://linktr.ee/47restaurant" target="_blank">Linktree</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 47 Restaurant. Tbilisi. | Demo Version</p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50); });
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

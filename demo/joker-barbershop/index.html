@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joker Barbershop Tbilisi</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Outfit:wght@200;300;400;500;600;700;800&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0A0A0C;
+  --dark: #12121A;
+  --card: #1A1A25;
+  --neon-green: #39FF14;
+  --neon-purple: #BF40BF;
+  --neon-pink: #FF1493;
+  --cream: #E8E6F0;
+  --text-muted: #6B6880;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', 'Noto Sans Georgian', sans-serif; background: var(--black); color: var(--cream); overflow-x: hidden; }
+
+.demo-badge { position: fixed; top: 20px; right: -35px; background: var(--neon-green); color: var(--black); padding: 5px 40px; font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; transform: rotate(45deg); z-index: 9999; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s; }
+nav.scrolled { background: rgba(10,10,12,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(57,255,20,0.1); }
+.nav-logo { font-family: 'Righteous', sans-serif; font-size: 1.8rem; color: var(--neon-green); text-decoration: none; text-shadow: 0 0 20px rgba(57,255,20,0.3); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--cream); font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.3s; }
+.nav-links a:hover { color: var(--neon-green); text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.menu-toggle span { width: 25px; height: 2px; background: var(--neon-green); }
+
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(191,64,191,0.08) 0%, transparent 50%), radial-gradient(ellipse at 30% 70%, rgba(57,255,20,0.05) 0%, transparent 40%); }
+.hero-card { position: absolute; width: 200px; height: 280px; border: 1px solid rgba(57,255,20,0.08); border-radius: 10px; opacity: 0.1; }
+.hero-card:nth-child(1) { top: 10%; left: 10%; transform: rotate(-15deg); }
+.hero-card:nth-child(2) { top: 20%; right: 10%; transform: rotate(10deg); }
+.hero-card:nth-child(3) { bottom: 15%; left: 20%; transform: rotate(5deg); }
+.hero-content { z-index: 2; }
+.hero-emoji { font-size: 4rem; margin-bottom: 1.5rem; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+.hero-tag { font-size: 0.75rem; letter-spacing: 6px; text-transform: uppercase; color: var(--neon-purple); margin-bottom: 1.5rem; }
+.hero h1 { font-family: 'Righteous', sans-serif; font-size: clamp(3.5rem, 10vw, 8rem); line-height: 1; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--neon-green), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero .sub { font-size: 1rem; font-weight: 300; letter-spacing: 5px; color: var(--text-muted); margin-bottom: 2rem; }
+.hero p { color: var(--text-muted); max-width: 450px; margin: 0 auto 2.5rem; line-height: 1.8; }
+.btn { display: inline-block; padding: 1rem 2.5rem; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.4s; border-radius: 4px; }
+.btn-neon { background: var(--neon-green); color: var(--black); border: 2px solid var(--neon-green); box-shadow: 0 0 20px rgba(57,255,20,0.3); }
+.btn-neon:hover { background: transparent; color: var(--neon-green); }
+.btn-purple { background: transparent; color: var(--neon-purple); border: 1px solid var(--neon-purple); margin-left: 1rem; }
+.btn-purple:hover { background: var(--neon-purple); color: white; box-shadow: 0 0 20px rgba(191,64,191,0.3); }
+
+.about { padding: 7rem 5%; background: var(--dark); }
+.about-wrap { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.about-visual { aspect-ratio: 1; background: var(--card); border-radius: 10px; border: 1px solid rgba(57,255,20,0.1); display: flex; align-items: center; justify-content: center; font-size: 5rem; position: relative; overflow: hidden; }
+.about-visual::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(57,255,20,0.05), rgba(191,64,191,0.05)); }
+.about-text .label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--neon-green); margin-bottom: 1rem; }
+.about-text h2 { font-family: 'Righteous', sans-serif; font-size: 2rem; margin-bottom: 1.5rem; }
+.about-text p { color: var(--text-muted); line-height: 1.9; margin-bottom: 1rem; }
+
+.services { padding: 7rem 5%; background: var(--black); }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label { font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--neon-green); margin-bottom: 0.5rem; }
+.section-title { font-family: 'Righteous', sans-serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+.section-line { width: 60px; height: 3px; background: linear-gradient(90deg, var(--neon-green), var(--neon-purple)); margin: 0 auto; border-radius: 2px; }
+
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+.service-card { background: var(--card); border: 1px solid rgba(57,255,20,0.06); padding: 2rem; border-radius: 8px; transition: all 0.4s; position: relative; overflow: hidden; }
+.service-card:hover { border-color: rgba(57,255,20,0.2); box-shadow: 0 0 30px rgba(57,255,20,0.05); transform: translateY(-3px); }
+.service-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--neon-green), var(--neon-purple)); opacity: 0; transition: opacity 0.4s; }
+.service-card:hover::after { opacity: 1; }
+.service-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.service-name { font-family: 'Righteous', sans-serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.service-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.service-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid rgba(57,255,20,0.06); }
+.service-price { font-family: 'Righteous'; font-size: 1.2rem; color: var(--neon-green); }
+.service-time { font-size: 0.8rem; color: var(--text-muted); }
+
+.team { padding: 7rem 5%; background: var(--dark); }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
+.team-card { text-align: center; padding: 2rem; background: var(--card); border-radius: 8px; border: 1px solid rgba(57,255,20,0.06); transition: all 0.3s; }
+.team-card:hover { border-color: rgba(191,64,191,0.2); }
+.team-avatar { width: 100px; height: 100px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, var(--neon-green), var(--neon-purple)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; padding: 3px; }
+.team-avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--card); display: flex; align-items: center; justify-content: center; }
+.team-name { font-family: 'Righteous'; font-size: 1.1rem; margin-bottom: 0.3rem; }
+.team-role { font-size: 0.75rem; color: var(--neon-purple); letter-spacing: 2px; }
+
+.booking { padding: 6rem 5%; background: var(--black); text-align: center; position: relative; }
+.booking::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(57,255,20,0.03) 0%, transparent 50%); }
+.booking h2 { font-family: 'Righteous'; font-size: 2.5rem; margin-bottom: 1rem; position: relative; }
+.booking p { color: var(--text-muted); margin-bottom: 2rem; position: relative; }
+.booking-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; position: relative; }
+.booking-item { text-align: center; }
+.booking-item-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.booking-item-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 0.3rem; }
+.booking-item-value { font-size: 0.9rem; color: var(--neon-green); }
+
+footer { background: var(--dark); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(57,255,20,0.06); }
+.footer-logo { font-family: 'Righteous'; font-size: 1.5rem; background: linear-gradient(135deg, var(--neon-green), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+.footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-bottom: 1.5rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+.footer-links a:hover { color: var(--neon-green); }
+.footer-copy { font-size: 0.7rem; color: rgba(57,255,20,0.15); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--black); padding: 2rem 5%; border-bottom: 1px solid rgba(57,255,20,0.1); }
+  .about-wrap { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .booking-info { flex-direction: column; gap: 1.5rem; }
+  .btn-purple { margin-left: 0; margin-top: 1rem; display: block; }
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav>
+  <a href="#" class="nav-logo">JOKER</a>
+  <ul class="nav-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="#team">გუნდი</a></li>
+    <li><a href="#booking">ჩაწერა</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-card"></div><div class="hero-card"></div><div class="hero-card"></div>
+  <div class="hero-content">
+    <div class="hero-emoji">🃏</div>
+    <p class="hero-tag">Barbershop • Tbilisi</p>
+    <h1>JOKER</h1>
+    <p class="sub">B A R B E R S H O P</p>
+    <p>სადაც სტილი თამაშის წესებს არღვევს. Joker Barbershop — გამბედაობა ყოველ ჭრაში.</p>
+    <a href="#services" class="btn btn-neon">სერვისები</a>
+    <a href="#booking" class="btn btn-purple">ჩაეწერე</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="about-visual reveal">🎭</div>
+    <div class="about-text reveal">
+      <p class="label">ჩვენ შესახებ</p>
+      <h2>წესები? ჩვენ ვქმნით ჩვენს წესებს</h2>
+      <p>Joker Barbershop — ეს არის სივრცე, სადაც კრეატიულობა შეხვდა ოსტატობას. აქ არ არსებობს შაბლონები — ყოველი ვიზიტი უნიკალურია, ისევე როგორც თქვენ.</p>
+      <p>ჩვენი ბარბერები არიან ნამდვილი არტისტები, რომლებიც თმას აქცევენ ხელოვნების ნაწარმოებად. Bold, edgy, creative — ეს არის Joker.</p>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header">
+    <p class="section-label">სერვისები</p>
+    <h2 class="section-title">ჩვენი მომსახურება</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal"><div class="service-icon">✂️</div><div class="service-name">Classic Cut</div><div class="service-desc">კლასიკური თმის შეჭრა პროფესიონალური ფინიშით.</div><div class="service-bottom"><span class="service-price">₾ 25</span><span class="service-time">35 წთ</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">🎨</div><div class="service-name">Creative Cut</div><div class="service-desc">კრეატიული, არასტანდარტული სტილი — თქვენი ინდივიდუალობის გამოხატვა.</div><div class="service-bottom"><span class="service-price">₾ 40</span><span class="service-time">50 წთ</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">🪒</div><div class="service-name">Beard Game</div><div class="service-desc">წვერის სრული მოვლა და ფორმირება.</div><div class="service-bottom"><span class="service-price">₾ 20</span><span class="service-time">25 წთ</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">🃏</div><div class="service-name">Joker Combo</div><div class="service-desc">თმა + წვერი + სახის მოვლა. სრული გარდაქმნა.</div><div class="service-bottom"><span class="service-price">₾ 55</span><span class="service-time">70 წთ</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">💈</div><div class="service-name">Hot Shave</div><div class="service-desc">ცხელი პირსახოცით კლასიკური გაპარსვა.</div><div class="service-bottom"><span class="service-price">₾ 25</span><span class="service-time">30 წთ</span></div></div>
+    <div class="service-card reveal"><div class="service-icon">⚡</div><div class="service-name">Design</div><div class="service-desc">თმაზე ნახატი/დიზაინი — შენი სტილი, შენი კანვასი.</div><div class="service-bottom"><span class="service-price">₾ 35</span><span class="service-time">45 წთ</span></div></div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="section-header">
+    <p class="section-label">გუნდი</p>
+    <h2 class="section-title">ჩვენი არტისტები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal"><div class="team-avatar"><div class="team-avatar-inner">🃏</div></div><div class="team-name">Joker</div><div class="team-role">Founder</div></div>
+    <div class="team-card reveal"><div class="team-avatar"><div class="team-avatar-inner">🎭</div></div><div class="team-name">Ace</div><div class="team-role">Senior Barber</div></div>
+    <div class="team-card reveal"><div class="team-avatar"><div class="team-avatar-inner">♠️</div></div><div class="team-name">King</div><div class="team-role">Barber Artist</div></div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2 class="reveal">მზად ხარ თამაშისთვის?</h2>
+  <p class="reveal">ჩაეწერე და შეცვალე შენი სტილი</p>
+  <a href="tel:+995555789012" class="btn btn-neon reveal">+995 555 789 012</a>
+  <div class="booking-info reveal">
+    <div class="booking-item"><div class="booking-item-icon">📍</div><div class="booking-item-label">მისამართი</div><div class="booking-item-value">მარჯანიშვილის ქ. 8, თბილისი</div></div>
+    <div class="booking-item"><div class="booking-item-icon">🕐</div><div class="booking-item-label">საათები</div><div class="booking-item-value">11:00 — 22:00</div></div>
+    <div class="booking-item"><div class="booking-item-icon">📱</div><div class="booking-item-label">Instagram</div><div class="booking-item-value">@joker_barbershop_tbilisi</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">JOKER BARBERSHOP</div>
+  <ul class="footer-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#services">სერვისები</a></li>
+    <li><a href="https://www.instagram.com/joker_barbershop_tbilisi/" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 Joker Barbershop. Tbilisi. | Demo Version</p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50); });
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

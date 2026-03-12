@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vallhallaecho Fitness Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0A0808;--dark:#161210;--card:#1E1A16;--fire:#E85D04;--fire-dark:#B84A03;--ember:#FF6B00;--gold:#D4A843;--cream:#F0E8DC;--muted:#7A6E62}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--fire);color:white;padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(10,8,8,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--fire);text-decoration:none;letter-spacing:5px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--cream);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--fire)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.mt span{width:25px;height:2px;background:var(--cream)}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(232,93,4,.12),transparent 60%)}
+.hero-rune{position:absolute;font-size:15rem;opacity:.03;font-family:'Bebas Neue';color:var(--fire);top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-content{z-index:2}
+.hero-icon{font-size:3.5rem;margin-bottom:1.5rem}
+.hero-tag{font-family:'Bebas Neue';font-size:1rem;letter-spacing:10px;color:var(--fire);margin-bottom:1.5rem}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,10rem);letter-spacing:8px;line-height:.9;margin-bottom:.5rem}
+.hero .sub{font-size:.8rem;letter-spacing:6px;font-weight:300;color:var(--muted);margin-bottom:2rem}
+.hero p{color:var(--muted);max-width:500px;margin:0 auto 2.5rem;line-height:1.8}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;transition:all .4s}
+.btn-fire{background:var(--fire);color:white;border:2px solid var(--fire)}
+.btn-fire:hover{background:transparent;color:var(--fire)}
+
+section{padding:6rem 5%}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{font-family:'Bebas Neue';font-size:1rem;letter-spacing:5px;color:var(--fire);margin-bottom:.5rem}
+.section-title{font-family:'Bebas Neue';font-size:clamp(2rem,5vw,3.5rem);letter-spacing:3px;margin-bottom:1rem}
+.section-line{width:60px;height:3px;background:var(--fire);margin:0 auto}
+
+.about{background:var(--dark)}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-visual{aspect-ratio:1;background:linear-gradient(135deg,var(--card),#2A2018);border:1px solid rgba(232,93,4,.08);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative}
+.about-visual .corner{position:absolute;width:30px;height:30px;border-color:var(--fire);border-style:solid;opacity:.3}
+.about-visual .corner.tl{top:10px;left:10px;border-width:2px 0 0 2px}
+.about-visual .corner.br{bottom:10px;right:10px;border-width:0 2px 2px 0}
+.about-text h2{font-family:'Bebas Neue';font-size:3rem;letter-spacing:3px;margin-bottom:1.5rem}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem}
+
+.programs{background:var(--black)}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.prog-card{background:var(--card);border:1px solid rgba(232,93,4,.06);padding:2rem;transition:all .4s}
+.prog-card:hover{border-color:rgba(232,93,4,.2);transform:translateY(-3px)}
+.prog-icon{font-size:2rem;margin-bottom:1rem}
+.prog-name{font-family:'Bebas Neue';font-size:1.3rem;letter-spacing:2px;margin-bottom:.5rem}
+.prog-desc{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+.warriors{background:var(--dark)}
+.warrior-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:900px;margin:0 auto}
+.warrior-card{text-align:center;padding:2rem;background:var(--card);border:1px solid rgba(232,93,4,.05)}
+.warrior-avatar{width:100px;height:100px;margin:0 auto 1.5rem;background:linear-gradient(135deg,var(--fire),var(--fire-dark));display:flex;align-items:center;justify-content:center;font-size:2.5rem;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.warrior-name{font-family:'Bebas Neue';font-size:1.2rem;letter-spacing:2px;margin-bottom:.3rem}
+.warrior-spec{font-size:.75rem;color:var(--fire);letter-spacing:1px}
+
+.pricing{background:var(--black)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid rgba(232,93,4,.06);padding:2.5rem;text-align:center;transition:all .4s}
+.price-card.featured{border-color:var(--fire);box-shadow:0 0 40px rgba(232,93,4,.1)}
+.price-card.featured .badge{background:var(--fire);color:white;padding:.3rem 1rem;font-size:.7rem;font-weight:700;display:inline-block;margin-bottom:1rem;letter-spacing:1px}
+.price-plan{font-family:'Bebas Neue';font-size:1.2rem;letter-spacing:3px;margin-bottom:.5rem}
+.price-amount{font-family:'Bebas Neue';font-size:3rem;color:var(--fire);margin-bottom:.5rem}
+.price-period{font-size:.8rem;color:var(--muted);margin-bottom:2rem}
+.price-features{list-style:none;text-align:left;margin-bottom:2rem}
+.price-features li{padding:.5rem 0;font-size:.85rem;color:var(--muted);border-bottom:1px solid rgba(232,93,4,.04)}
+.price-features li::before{content:'⚡ ';color:var(--fire)}
+
+.cta{background:linear-gradient(135deg,#1A0E08,var(--black));text-align:center;padding:5rem;position:relative}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(232,93,4,.08),transparent 60%)}
+.cta h2{font-family:'Bebas Neue';font-size:3rem;letter-spacing:3px;margin-bottom:1rem;position:relative}
+.cta p{color:var(--muted);margin-bottom:2rem;position:relative}
+.cta-info{display:flex;justify-content:center;gap:3rem;margin-top:2rem;position:relative}
+.cta-item{text-align:center}
+.cta-item-icon{font-size:1.3rem;margin-bottom:.3rem}
+.cta-item-value{font-size:.9rem;color:var(--fire)}
+.cta-item-label{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+
+footer{background:var(--dark);padding:3rem 5%;text-align:center;border-top:1px solid rgba(232,93,4,.06)}
+.footer-logo{font-family:'Bebas Neue';font-size:1.5rem;color:var(--fire);letter-spacing:5px;margin-bottom:1rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.8rem}
+.footer-links a:hover{color:var(--fire)}
+.footer-copy{font-size:.7rem;color:rgba(232,93,4,.15)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+.nav-links{display:none}.mt{display:flex}
+.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}
+.about-wrap,.price-grid{grid-template-columns:1fr}
+.warrior-grid{grid-template-columns:1fr}
+.cta-info{flex-direction:column;gap:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav>
+  <a href="#" class="nav-logo">VALHALLA</a>
+  <ul class="nav-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#programs">ვარჯიში</a></li>
+    <li><a href="#pricing">გაწევრიანება</a></li>
+    <li><a href="#contact">კონტაქტი</a></li>
+  </ul>
+  <button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-rune">ᚡ</div>
+  <div class="hero-content">
+    <div class="hero-icon">⚔️</div>
+    <p class="hero-tag">FITNESS CLUB</p>
+    <h1>VALHALLA<br>ECHO</h1>
+    <p class="sub">F I T N E S S &nbsp; C L U B</p>
+    <p>მეომრის სულისკვეთება, ჩემპიონის დისციპლინა. შეუერთდი ლეგიონს — გაიღვიძე შენში მეომარი.</p>
+    <a href="#pricing" class="btn btn-fire">შეუერთდი</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="about-visual reveal">
+      <div class="corner tl"></div><div class="corner br"></div>
+      ⚔️
+    </div>
+    <div class="about-text reveal">
+      <h2>FORGE YOUR BODY</h2>
+      <p>Vallhallaecho Fitness Club — ეს არის ადგილი, სადაც ყოველი ვარჯიში ბრძოლაა. ბრძოლა საკუთარ თავთან, ბრძოლა სისუსტესთან, ბრძოლა, რომელიც ყოველთვის მოიგება.</p>
+      <p>ჩვენი ფილოსოფია მარტივია: არ არსებობს მალსახმობი. მხოლოდ შრომა, ოფლი და შედეგი. Viking spirit, modern training.</p>
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="section-header">
+    <p class="section-label">TRAINING</p>
+    <h2 class="section-title">ვარჯიშის პროგრამები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card reveal"><div class="prog-icon">🏋️</div><div class="prog-name">FORGE</div><div class="prog-desc">ძალოვანი ვარჯიში — შენი სხეულის გამოჭედვა რკინით.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">🔥</div><div class="prog-name">INFERNO</div><div class="prog-desc">HIIT — მაღალი ინტენსივობის ინტერვალური ვარჯიში.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">⚔️</div><div class="prog-name">WARRIOR</div><div class="prog-desc">ფუნქციონალური ვარჯიში — მთელი სხეულის ძალა.</div></div>
+    <div class="prog-card reveal"><div class="prog-icon">🥊</div><div class="prog-name">COMBAT</div><div class="prog-desc">საბრძოლო ხელოვნება — ბოქსი, MMA ელემენტები.</div></div>
+  </div>
+</section>
+
+<section class="warriors">
+  <div class="section-header">
+    <p class="section-label">WARRIORS</p>
+    <h2 class="section-title">მწვრთნელები</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="warrior-grid">
+    <div class="warrior-card reveal"><div class="warrior-avatar">💪</div><div class="warrior-name">THOR</div><div class="warrior-spec">Strength Coach</div></div>
+    <div class="warrior-card reveal"><div class="warrior-avatar">🔥</div><div class="warrior-name">FREYA</div><div class="warrior-spec">HIIT Specialist</div></div>
+    <div class="warrior-card reveal"><div class="warrior-avatar">⚡</div><div class="warrior-name">ODIN</div><div class="warrior-spec">Head Coach</div></div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-header">
+    <p class="section-label">JOIN THE CLAN</p>
+    <h2 class="section-title">გაწევრიანება</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="price-grid">
+    <div class="price-card reveal">
+      <div class="price-plan">SHIELD</div><div class="price-amount">₾ 70</div><div class="price-period">თვეში</div>
+      <ul class="price-features"><li>სავარჯიშო დარბაზი</li><li>კარდიო ზონა</li><li>საშხაპე</li></ul>
+      <a href="#contact" class="btn btn-fire" style="width:100%;text-align:center">არჩევა</a>
+    </div>
+    <div class="price-card featured reveal">
+      <div class="badge">POPULAR</div>
+      <div class="price-plan">SWORD</div><div class="price-amount">₾ 110</div><div class="price-period">თვეში</div>
+      <ul class="price-features"><li>ყველაფერი Shield-ში</li><li>ჯგუფური ვარჯიშები</li><li>საუნა</li><li>1 პერსონალური</li></ul>
+      <a href="#contact" class="btn btn-fire" style="width:100%;text-align:center">არჩევა</a>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-plan">BERSERKER</div><div class="price-amount">₾ 180</div><div class="price-period">თვეში</div>
+      <ul class="price-features"><li>ყველაფერი Sword-ში</li><li>4 პერსონალური</li><li>კვების გეგმა</li><li>24/7 წვდომა</li></ul>
+      <a href="#contact" class="btn btn-fire" style="width:100%;text-align:center">არჩევა</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2 class="reveal">მზად ხარ ბრძოლისთვის?</h2>
+  <p class="reveal">შეუერთდი Valhalla Echo-ს და გახდი შენი სხეულის მეომარი</p>
+  <a href="tel:+995555901234" class="btn btn-fire reveal">+995 555 901 234</a>
+  <div class="cta-info reveal">
+    <div class="cta-item"><div class="cta-item-icon">📍</div><div class="cta-item-label">Arena</div><div class="cta-item-value">ნუცუბიძის ქ. 77, თბილისი</div></div>
+    <div class="cta-item"><div class="cta-item-icon">🕐</div><div class="cta-item-label">Hours</div><div class="cta-item-value">06:00 — 23:00</div></div>
+    <div class="cta-item"><div class="cta-item-icon">📱</div><div class="cta-item-label">Instagram</div><div class="cta-item-value">@valhallaecho_fitness_club</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">VALLHALLAECHO</div>
+  <ul class="footer-links">
+    <li><a href="#about">ჩვენ შესახებ</a></li>
+    <li><a href="#programs">ვარჯიში</a></li>
+    <li><a href="https://www.instagram.com/valhallaecho_fitness_club/" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2024 Vallhallaecho Fitness Club. Tbilisi. | Demo Version</p>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
