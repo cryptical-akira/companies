@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrei Aivazian | Tattoo Artist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#080808;--dark:#111;--card:#181818;--warm:#C8A882;--warm-dark:#A08060;--cream:#F0EBE3;--muted:#6B6560;--line:rgba(200,168,130,.1)}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--warm);color:var(--black);padding:5px 40px;font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1.2rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(8,8,8,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--cream);text-decoration:none;letter-spacing:2px}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--warm)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:1.5px;background:var(--cream)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(200,168,130,.04),transparent 60%)}
+.hero-content{z-index:2}.hero-tag{font-size:.7rem;letter-spacing:8px;text-transform:uppercase;color:var(--warm);margin-bottom:2rem;font-weight:400}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1.15;margin-bottom:.5rem;letter-spacing:2px}
+.hero h1 .em{font-style:italic;color:var(--warm)}
+.hero p{color:var(--muted);max-width:500px;margin:1.5rem auto 2.5rem;line-height:1.9;font-weight:300;font-size:.95rem}
+.hero-followers{font-size:.8rem;color:var(--warm);letter-spacing:3px;margin-bottom:2rem}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:all .4s}
+.btn-warm{background:transparent;color:var(--warm);border:1px solid var(--warm)}.btn-warm:hover{background:var(--warm);color:var(--black)}
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.65rem;letter-spacing:6px;text-transform:uppercase;color:var(--warm);margin-bottom:.5rem;font-weight:400}.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:1rem;letter-spacing:1px}.sln{width:40px;height:1px;background:var(--warm);margin:0 auto}
+.about{background:var(--dark)}.about-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:350px 1fr;gap:4rem;align-items:center}
+.about-photo{aspect-ratio:3/4;background:linear-gradient(135deg,var(--card),#1E1E1E);display:flex;align-items:center;justify-content:center;font-size:4rem;border:1px solid var(--line)}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:1.5rem;letter-spacing:1px}.about-text h2 span{color:var(--warm);font-style:italic}
+.about-text p{color:var(--muted);line-height:2;margin-bottom:1rem;font-weight:300;font-size:.9rem}
+.styles{background:var(--black)}.style-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
+.style-card{background:var(--card);border:1px solid var(--line);padding:2rem;text-align:center;transition:all .4s}
+.style-card:hover{border-color:var(--warm)}.style-icon{font-size:1.5rem;margin-bottom:1rem}.style-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:.5rem;letter-spacing:1px}.style-desc{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300}
+.portfolio{background:var(--dark)}.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:0 auto}
+.port-item{aspect-ratio:1;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:2rem;transition:all .4s;cursor:pointer;position:relative;overflow:hidden}
+.port-item:hover{border-color:var(--warm);transform:scale(1.02)}
+.port-item:nth-child(1){background:linear-gradient(135deg,#1A1A1A,#222)}.port-item:nth-child(2){background:linear-gradient(135deg,#1E1A16,#2A2420)}.port-item:nth-child(3){background:linear-gradient(135deg,#181820,#222230)}
+.port-item:nth-child(4){background:linear-gradient(135deg,#201A1A,#2A2222)}.port-item:nth-child(5){background:linear-gradient(135deg,#1A1E1A,#222822)}.port-item:nth-child(6){background:linear-gradient(135deg,#1A1A20,#222228)}
+.process{background:var(--black)}.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.proc-step{text-align:center;position:relative}.proc-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--warm);opacity:.3;margin-bottom:.5rem}.proc-title{font-size:.9rem;font-weight:600;margin-bottom:.5rem;letter-spacing:1px}.proc-desc{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300}
+.booking{background:var(--dark);text-align:center;padding:5rem 5%}
+.booking h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;margin-bottom:1rem;letter-spacing:1px}.booking p{color:var(--muted);margin-bottom:2rem;font-weight:300}
+.booking-info{display:flex;justify-content:center;gap:3rem;margin-top:2rem}
+.bi{text-align:center}.bi-icon{font-size:1.2rem;margin-bottom:.3rem}.bi-val{font-size:.9rem;color:var(--warm)}.bi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+footer{background:var(--black);padding:3rem 5%;text-align:center;border-top:1px solid var(--line)}
+.fl{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--warm);margin-bottom:1rem;letter-spacing:2px}
+.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}.flinks a{color:var(--muted);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--warm)}.fc{font-size:.7rem;color:rgba(200,168,130,.15)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}.about-grid{grid-template-columns:1fr}.port-grid{grid-template-columns:1fr 1fr}.proc-grid{grid-template-columns:1fr 1fr}.booking-info{flex-direction:column;gap:1.5rem}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">A. AIVAZIAN</a><ul class="nav-links"><li><a href="#about">შესახებ</a></li><li><a href="#styles">სტილები</a></li><li><a href="#portfolio">პორტფოლიო</a></li><li><a href="#booking">ჩაწერა</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="hero-content"><p class="hero-tag">Tattoo Artist • Tbilisi</p><h1>Andrei<br><span class="em">Aivazian</span></h1><p class="hero-followers">48K+ FOLLOWERS</p><p>ხელოვნება კანზე. ყოველი ტატუ არის უნიკალური ნამუშევარი, შექმნილი თქვენი ისტორიისთვის.</p><a href="#booking" class="btn btn-warm">ჩაეწერე</a></div></section>
+
+<section class="about" id="about"><div class="about-grid"><div class="about-photo reveal">🎨</div><div class="about-text reveal"><h2>არტისტი, <span>ხელოვანი</span></h2><p>Andrei Aivazian — თბილისში მოღვაწე ტატუ არტისტი 48,000-ზე მეტი მიმდევრით. მისი ნამუშევრები გამოირჩევა დეტალურობით, ემოციურობით და ინდივიდუალური მიდგომით.</p><p>ყოველი პროექტი იწყება მოსმენით — თქვენი იდეა, თქვენი ისტორია, თქვენი ხედვა. Andrei-ს ხელში ეს ხედვა ხდება კანზე გამოხატული ხელოვნება.</p></div></div></section>
+
+<section class="styles" id="styles"><div class="sh"><p class="sl">სტილები</p><h2 class="st">სპეციალიზაცია</h2><div class="sln"></div></div><div class="style-grid"><div class="style-card reveal"><div class="style-icon">🖤</div><div class="style-name">Realism</div><div class="style-desc">ფოტორეალისტური ტატუები — პორტრეტები და ბუნება.</div></div><div class="style-card reveal"><div class="style-icon">◼️</div><div class="style-name">Blackwork</div><div class="style-desc">შავი მელნის ინტენსიური, გრაფიკული ნამუშევრები.</div></div><div class="style-card reveal"><div class="style-icon">🌊</div><div class="style-name">Watercolor</div><div class="style-desc">აკვარელის ეფექტი — ფერადი, თავისუფალი.</div></div><div class="style-card reveal"><div class="style-icon">📐</div><div class="style-name">Geometric</div><div class="style-desc">გეომეტრიული ფორმები და პატერნები.</div></div><div class="style-card reveal"><div class="style-icon">✍️</div><div class="style-name">Fine Line</div><div class="style-desc">წვრილი ხაზები — მინიმალისტური ელეგანტურობა.</div></div></div></section>
+
+<section class="portfolio" id="portfolio"><div class="sh"><p class="sl">ნამუშევრები</p><h2 class="st">პორტფოლიო</h2><div class="sln"></div></div><div class="port-grid"><div class="port-item reveal">🖤</div><div class="port-item reveal">🌹</div><div class="port-item reveal">🦁</div><div class="port-item reveal">⚡</div><div class="port-item reveal">🌿</div><div class="port-item reveal">🎭</div></div></section>
+
+<section class="process"><div class="sh"><p class="sl">პროცესი</p><h2 class="st">როგორ მუშაობს</h2><div class="sln"></div></div><div class="proc-grid"><div class="proc-step reveal"><div class="proc-num">01</div><div class="proc-title">კონსულტაცია</div><div class="proc-desc">განვიხილავთ იდეას, ზომას, სტილს.</div></div><div class="proc-step reveal"><div class="proc-num">02</div><div class="proc-title">ესკიზი</div><div class="proc-desc">შეიქმნება ინდივიდუალური დიზაინი.</div></div><div class="proc-step reveal"><div class="proc-num">03</div><div class="proc-title">სესია</div><div class="proc-desc">ტატუს შესრულება სტერილურ გარემოში.</div></div><div class="proc-step reveal"><div class="proc-num">04</div><div class="proc-title">მოვლა</div><div class="proc-desc">aftercare ინსტრუქციები.</div></div></div></section>
+
+<section class="booking" id="booking"><h2 class="reveal">დაჯავშნე სესია</h2><p class="reveal">მოგვწერეთ Instagram-ზე ან დაგვირეკეთ</p><a href="https://www.instagram.com/andrei_aivazian/" target="_blank" class="btn btn-warm reveal">Instagram: @andrei_aivazian</a><div class="booking-info reveal"><div class="bi"><div class="bi-icon">📍</div><div class="bi-lbl">სტუდია</div><div class="bi-val">თბილისი</div></div><div class="bi"><div class="bi-icon">📱</div><div class="bi-lbl">Instagram</div><div class="bi-val">48K+ followers</div></div><div class="bi"><div class="bi-icon">📞</div><div class="bi-lbl">ტელეფონი</div><div class="bi-val">+995 555 111 222</div></div></div></section>
+
+<footer><div class="fl">ANDREI AIVAZIAN</div><ul class="flinks"><li><a href="#about">შესახებ</a></li><li><a href="#portfolio">პორტფოლიო</a></li><li><a href="https://www.instagram.com/andrei_aivazian/" target="_blank">Instagram</a></li></ul><p class="fc">© 2024 Andrei Aivazian Tattoo. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

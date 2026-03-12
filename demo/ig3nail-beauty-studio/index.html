@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IG3Nail Beauty Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--blush:#FFF0F0;--pink:#E8A0A0;--rose-gold:#C8948A;--deep-rose:#8B5C5C;--white:#FFFAFA;--card:#FFFFFF;--dark:#2A1A1A;--text:#4A3A3A;--muted:#9A8585;--line:#F0DADA}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--rose-gold);color:white;padding:5px 40px;font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1.2rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(255,250,250,.95);backdrop-filter:blur(20px);box-shadow:0 1px 10px rgba(0,0,0,.03)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--deep-rose);text-decoration:none;letter-spacing:2px}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:500;letter-spacing:1px;transition:color .3s}.nav-links a:hover{color:var(--rose-gold)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:1.5px;background:var(--deep-rose)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,var(--blush),var(--white));position:relative}
+.hero-content{z-index:2}.hero-icon{font-size:3rem;margin-bottom:1.5rem}
+.hero-tag{font-size:.7rem;letter-spacing:6px;text-transform:uppercase;color:var(--rose-gold);margin-bottom:2rem;font-weight:500}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:600;line-height:1.15;margin-bottom:1.5rem;color:var(--deep-rose)}
+.hero h1 .em{font-style:italic;color:var(--rose-gold)}
+.hero .followers{font-size:.8rem;color:var(--rose-gold);letter-spacing:3px;margin-bottom:1rem}
+.hero p{color:var(--muted);max-width:450px;margin:0 auto 2.5rem;line-height:1.9;font-weight:300}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .4s;border-radius:30px}
+.btn-rose{background:var(--rose-gold);color:white;border:2px solid var(--rose-gold)}.btn-rose:hover{background:transparent;color:var(--rose-gold)}
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--rose-gold);margin-bottom:.5rem;font-weight:500}.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--deep-rose);margin-bottom:1rem}.sln{width:40px;height:2px;background:var(--rose-gold);margin:0 auto;border-radius:2px}
+.about{background:var(--blush)}.about-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-visual{aspect-ratio:4/3;background:linear-gradient(135deg,var(--pink),var(--rose-gold));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--deep-rose);margin-bottom:1.5rem}
+.about-text p{color:var(--muted);line-height:2;margin-bottom:1rem;font-weight:300}
+.services{background:var(--white)}.serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.serv-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:2rem;text-align:center;transition:all .4s}
+.serv-card:hover{border-color:var(--rose-gold);transform:translateY(-3px);box-shadow:0 10px 30px rgba(200,148,138,.1)}
+.serv-icon{font-size:2rem;margin-bottom:1rem}.serv-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:.5rem;color:var(--deep-rose)}
+.serv-desc{font-size:.85rem;color:var(--muted);line-height:1.6;font-weight:300;margin-bottom:1rem}
+.serv-price{font-size:1.1rem;font-weight:600;color:var(--rose-gold)}
+.gallery{background:var(--blush)}.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1000px;margin:0 auto}
+.gal-item{aspect-ratio:1;background:linear-gradient(135deg,var(--pink),var(--rose-gold));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:all .3s;cursor:pointer;opacity:.8}.gal-item:hover{opacity:1;transform:scale(1.03)}
+.pricing{background:var(--white)}.price-list{max-width:700px;margin:0 auto}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;border-bottom:1px solid var(--line)}
+.price-row-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--deep-rose)}.price-row-desc{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+.price-row-price{font-size:1.1rem;font-weight:600;color:var(--rose-gold);white-space:nowrap}
+.team{background:var(--blush)}.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+.team-card{text-align:center}.team-av{width:80px;height:80px;margin:0 auto 1rem;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--rose-gold));display:flex;align-items:center;justify-content:center;font-size:2rem}
+.team-name{font-weight:600;font-size:.9rem;margin-bottom:.2rem}.team-spec{font-size:.75rem;color:var(--rose-gold)}
+.booking{background:var(--white);text-align:center;padding:5rem 5%}
+.booking h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:var(--deep-rose);margin-bottom:1rem}.booking p{color:var(--muted);margin-bottom:2rem}
+.bi-grid{display:flex;justify-content:center;gap:3rem;margin-top:2rem}.bi{text-align:center}.bi-icon{font-size:1.2rem;margin-bottom:.3rem}.bi-val{font-size:.9rem;color:var(--rose-gold)}.bi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+footer{background:var(--blush);padding:3rem 5%;text-align:center}
+.fl{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--deep-rose);margin-bottom:1rem;letter-spacing:2px}
+.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}.flinks a{color:var(--muted);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--rose-gold)}.fc{font-size:.7rem;color:var(--pink)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--white);padding:2rem 5%}.about-grid{grid-template-columns:1fr}.gal-grid,.team-grid{grid-template-columns:1fr 1fr}.bi-grid{flex-direction:column;gap:1.5rem}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">IG3Nail</a><ul class="nav-links"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#services">სერვისები</a></li><li><a href="#pricing">ფასები</a></li><li><a href="#booking">ჩაწერა</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="hero-content"><div class="hero-icon">💅</div><p class="hero-tag">Beauty Studio • Tbilisi</p><h1>IG3Nail<br><span class="em">Beauty Studio</span></h1><p class="followers">49K+ FOLLOWERS</p><p>სილამაზე ყოველ დეტალში. IG3Nail — თბილისის პრემიალური ნეილ სტუდია.</p><a href="#booking" class="btn btn-rose">ჩაეწერე</a></div></section>
+
+<section class="about" id="about"><div class="about-grid"><div class="about-visual reveal">💎</div><div class="about-text reveal"><h2>სილამაზის ხელოვნება</h2><p>IG3Nail Beauty Studio — 49,000-ზე მეტი მიმდევრით, ჩვენ ვართ თბილისის ერთ-ერთი ყველაზე პოპულარული ნეილ სტუდია. ჩვენი ოსტატები ქმნიან ხელოვნების ნიმუშებს თქვენს ფრჩხილებზე.</p><p>პრემიალური მასალები, ჰიგიენის უმაღლესი სტანდარტები და ინდივიდუალური მიდგომა — ეს არის IG3Nail.</p></div></div></section>
+
+<section class="services" id="services"><div class="sh"><p class="sl">სერვისები</p><h2 class="st">ჩვენი მომსახურება</h2><div class="sln"></div></div><div class="serv-grid"><div class="serv-card reveal"><div class="serv-icon">💅</div><div class="serv-name">მანიკური</div><div class="serv-desc">კლასიკური და აპარატული მანიკური.</div><div class="serv-price">₾ 40-დან</div></div><div class="serv-card reveal"><div class="serv-icon">🦶</div><div class="serv-name">პედიკური</div><div class="serv-desc">პროფესიონალური პედიკური და მოვლა.</div><div class="serv-price">₾ 50-დან</div></div><div class="serv-card reveal"><div class="serv-icon">🎨</div><div class="serv-name">ნეილ არტი</div><div class="serv-desc">უნიკალური დიზაინები და ხატვა.</div><div class="serv-price">₾ 60-დან</div></div><div class="serv-card reveal"><div class="serv-icon">💎</div><div class="serv-name">გაფართოება</div><div class="serv-desc">ფრჩხილის გაფართოება გელით.</div><div class="serv-price">₾ 70-დან</div></div><div class="serv-card reveal"><div class="serv-icon">✨</div><div class="serv-name">გელ ლაქი</div><div class="serv-desc">გელ ლაქით დაფარვა — 2-3 კვირა.</div><div class="serv-price">₾ 35-დან</div></div><div class="serv-card reveal"><div class="serv-icon">🌸</div><div class="serv-name">SPA მოვლა</div><div class="serv-desc">ხელების და ფეხების SPA პროცედურა.</div><div class="serv-price">₾ 45-დან</div></div></div></section>
+
+<section class="gallery"><div class="sh"><p class="sl">გალერეა</p><h2 class="st">ჩვენი ნამუშევრები</h2><div class="sln"></div></div><div class="gal-grid"><div class="gal-item reveal">💅</div><div class="gal-item reveal">🌸</div><div class="gal-item reveal">💎</div><div class="gal-item reveal">✨</div><div class="gal-item reveal">🎨</div><div class="gal-item reveal">🌹</div><div class="gal-item reveal">💖</div><div class="gal-item reveal">⭐</div></div></section>
+
+<section class="team"><div class="sh"><p class="sl">გუნდი</p><h2 class="st">ჩვენი ოსტატები</h2><div class="sln"></div></div><div class="team-grid"><div class="team-card reveal"><div class="team-av">👩</div><div class="team-name">მარიამ</div><div class="team-spec">Head Master</div></div><div class="team-card reveal"><div class="team-av">👩</div><div class="team-name">ანა</div><div class="team-spec">Nail Artist</div></div><div class="team-card reveal"><div class="team-av">👩</div><div class="team-name">ნინო</div><div class="team-spec">Pedicure</div></div><div class="team-card reveal"><div class="team-av">👩</div><div class="team-name">თამარ</div><div class="team-spec">Gel Expert</div></div></div></section>
+
+<section class="booking" id="booking"><h2 class="reveal">ჩაეწერე ახლავე</h2><p class="reveal">აირჩიე სერვისი და სასურველი დრო</p><a href="tel:+995555444555" class="btn btn-rose reveal">+995 555 444 555</a><div class="bi-grid reveal"><div class="bi"><div class="bi-icon">📍</div><div class="bi-lbl">მისამართი</div><div class="bi-val">თბილისი</div></div><div class="bi"><div class="bi-icon">🕐</div><div class="bi-lbl">საათები</div><div class="bi-val">10:00 — 20:00</div></div><div class="bi"><div class="bi-icon">📱</div><div class="bi-lbl">Facebook</div><div class="bi-val">49K+ followers</div></div></div></section>
+
+<footer><div class="fl">IG3Nail Beauty Studio</div><ul class="flinks"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#services">სერვისები</a></li><li><a href="https://www.facebook.com/nailbeautytbilisi/" target="_blank">Facebook</a></li></ul><p class="fc">© 2024 IG3Nail Beauty Studio. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

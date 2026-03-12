@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hualing | ჰუალინგი სავაჭრო ცენტრი</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--white:#FAFAFA;--light:#F4F4F4;--card:#FFFFFF;--dark:#1A1A2E;--navy:#16213E;--accent:#0F3460;--gold:#E8B84B;--text:#333;--muted:#888;--line:#E8E8E8}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--accent);color:white;padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s;background:transparent}
+nav.scrolled{background:rgba(250,250,250,.95);backdrop-filter:blur(20px);box-shadow:0 1px 10px rgba(0,0,0,.05)}
+.nav-logo{font-size:1.5rem;font-weight:900;color:var(--accent);text-decoration:none;letter-spacing:1px}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:2px;background:var(--dark)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,var(--dark),var(--navy));color:white;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(232,184,75,.08),transparent 50%)}
+.hero-content{z-index:2}.hero-tag{font-size:.75rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;font-weight:500}
+.hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;letter-spacing:2px}
+.hero h1 .gold{color:var(--gold)}
+.hero p{color:rgba(255,255,255,.5);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .4s;border-radius:4px}
+.btn-gold{background:var(--gold);color:var(--dark);border:2px solid var(--gold)}.btn-gold:hover{background:transparent;color:var(--gold)}
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;font-weight:600}.st{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem}.sln{width:40px;height:3px;background:var(--accent);margin:0 auto;border-radius:2px}
+.about{background:var(--light)}.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-visual{aspect-ratio:16/9;background:linear-gradient(135deg,var(--accent),var(--navy));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.about-text h2{font-size:2rem;font-weight:800;margin-bottom:1.5rem}.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-weight:300}
+.about-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.about-num{text-align:center;padding:1rem;background:var(--card);border-radius:8px;border:1px solid var(--line)}
+.about-num-val{font-size:1.8rem;font-weight:900;color:var(--accent)}.about-num-label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:.3rem}
+.directory{background:var(--white)}.dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.dir-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.5rem;text-align:center;transition:all .3s}
+.dir-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.dir-icon{font-size:2rem;margin-bottom:.8rem}.dir-name{font-weight:600;font-size:.95rem;margin-bottom:.3rem}.dir-count{font-size:.75rem;color:var(--muted)}
+.floor-map{background:var(--light)}.map-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1000px;margin:0 auto}
+.floor-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2rem;text-align:center;transition:all .3s}
+.floor-card:hover{border-color:var(--gold)}
+.floor-num{font-size:2rem;font-weight:900;color:var(--accent);margin-bottom:.5rem}.floor-name{font-weight:600;margin-bottom:.5rem}.floor-desc{font-size:.8rem;color:var(--muted);line-height:1.5}
+.events{background:var(--white)}.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.event-card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:all .3s}
+.event-card:hover{box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.event-img{height:150px;background:linear-gradient(135deg,var(--accent),var(--navy));display:flex;align-items:center;justify-content:center;font-size:2rem;color:white}
+.event-body{padding:1.5rem}.event-date{font-size:.7rem;color:var(--gold);font-weight:600;letter-spacing:1px;margin-bottom:.5rem}.event-title{font-weight:700;margin-bottom:.5rem}.event-desc{font-size:.85rem;color:var(--muted);line-height:1.5}
+.map-section{background:var(--light)}.map-embed{max-width:1000px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:8px;height:400px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.info{background:var(--white)}.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.info-card{text-align:center;padding:2rem;background:var(--card);border:1px solid var(--line);border-radius:8px}
+.info-icon{font-size:1.5rem;margin-bottom:1rem}.info-title{font-weight:700;margin-bottom:.5rem;font-size:.95rem}.info-val{font-size:.85rem;color:var(--muted);line-height:1.5}
+footer{background:var(--dark);color:white;padding:3rem 5%;text-align:center}
+.fl{font-size:1.3rem;font-weight:900;color:var(--gold);margin-bottom:1rem;letter-spacing:1px}
+.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}.flinks a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--gold)}.fc{font-size:.7rem;color:rgba(255,255,255,.2)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--white);padding:2rem 5%;box-shadow:0 10px 30px rgba(0,0,0,.05)}.about-grid{grid-template-columns:1fr}.about-nums,.map-grid,.info-grid{grid-template-columns:1fr 1fr}.event-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">HUALING</a><ul class="nav-links"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#directory">მაღაზიები</a></li><li><a href="#floors">სართულები</a></li><li><a href="#info">ინფო</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="hero-content"><p class="hero-tag">Shopping Center • Tbilisi</p><h1>HUALING<br><span class="gold">ჰუალინგი</span></h1><p>თბილისის ყველაზე დიდი სავაჭრო ცენტრი. ყველაფერი ერთ სივრცეში — შოპინგი, გართობა, გასტრონომია.</p><a href="#directory" class="btn btn-gold">მაღაზიები</a></div></section>
+
+<section class="about" id="about"><div class="about-grid"><div class="about-visual reveal">🏬</div><div class="about-text reveal"><h2>ყველაფერი ერთ სივრცეში</h2><p>ჰუალინგი — თბილისის უმსხვილესი სავაჭრო და გასართობი ცენტრი. აქ თავმოყრილია 200-ზე მეტი ბრენდი, რესტორნები, კინოთეატრი და გასართობი სივრცეები.</p><p>თანამედროვე არქიტექტურა, კომფორტული სივრცე და ოჯახისთვის იდეალური გარემო.</p><div class="about-nums"><div class="about-num"><div class="about-num-val">200+</div><div class="about-num-label">მაღაზია</div></div><div class="about-num"><div class="about-num-val">50+</div><div class="about-num-label">რესტორანი</div></div><div class="about-num"><div class="about-num-val">5</div><div class="about-num-label">სართული</div></div><div class="about-num"><div class="about-num-val">2000</div><div class="about-num-label">პარკინგი</div></div></div></div></div></section>
+
+<section class="directory" id="directory"><div class="sh"><p class="sl">მაღაზიები</p><h2 class="st">კატეგორიები</h2><div class="sln"></div></div><div class="dir-grid"><div class="dir-card reveal"><div class="dir-icon">👔</div><div class="dir-name">ტანსაცმელი</div><div class="dir-count">80+ მაღაზია</div></div><div class="dir-card reveal"><div class="dir-icon">👟</div><div class="dir-name">ფეხსაცმელი</div><div class="dir-count">30+ მაღაზია</div></div><div class="dir-card reveal"><div class="dir-icon">💎</div><div class="dir-name">აქსესუარები</div><div class="dir-count">25+ მაღაზია</div></div><div class="dir-card reveal"><div class="dir-icon">📱</div><div class="dir-name">ელექტრონიკა</div><div class="dir-count">15+ მაღაზია</div></div><div class="dir-card reveal"><div class="dir-icon">🏠</div><div class="dir-name">სახლი & ინტერიერი</div><div class="dir-count">20+ მაღაზია</div></div><div class="dir-card reveal"><div class="dir-icon">🍔</div><div class="dir-name">Food Court</div><div class="dir-count">50+ რესტორანი</div></div><div class="dir-card reveal"><div class="dir-icon">🎬</div><div class="dir-name">გართობა</div><div class="dir-count">კინო, ბოულინგი</div></div><div class="dir-card reveal"><div class="dir-icon">💄</div><div class="dir-name">სილამაზე</div><div class="dir-count">15+ სალონი</div></div></div></section>
+
+<section class="floor-map" id="floors"><div class="sh"><p class="sl">სართულები</p><h2 class="st">რუკა</h2><div class="sln"></div></div><div class="map-grid"><div class="floor-card reveal"><div class="floor-num">B1</div><div class="floor-name">პარკინგი</div><div class="floor-desc">2000 ადგილი, უფასო 3 საათი</div></div><div class="floor-card reveal"><div class="floor-num">1F</div><div class="floor-name">ფეშენი</div><div class="floor-desc">ტანსაცმელი, ფეხსაცმელი, აქსესუარები</div></div><div class="floor-card reveal"><div class="floor-num">2F</div><div class="floor-name">ელექტრონიკა & სახლი</div><div class="floor-desc">ტექნიკა, ავეჯი, ინტერიერი</div></div><div class="floor-card reveal"><div class="floor-num">3F</div><div class="floor-name">Food Court & გართობა</div><div class="floor-desc">რესტორნები, კინო, ბოულინგი</div></div></div></section>
+
+<section class="map-section"><div class="sh"><p class="sl">მდებარეობა</p><h2 class="st">ჩვენი მისამართი</h2><div class="sln"></div></div><div class="map-embed reveal">📍 Google Maps</div></section>
+
+<section class="info" id="info"><div class="sh"><p class="sl">ინფორმაცია</p><h2 class="st">სასარგებლო ინფო</h2><div class="sln"></div></div><div class="info-grid"><div class="info-card reveal"><div class="info-icon">🕐</div><div class="info-title">სამუშაო საათები</div><div class="info-val">10:00 — 22:00<br>ყოველდღე</div></div><div class="info-card reveal"><div class="info-icon">🅿️</div><div class="info-title">პარკინგი</div><div class="info-val">2000 ადგილი<br>3 საათი უფასო</div></div><div class="info-card reveal"><div class="info-icon">📍</div><div class="info-title">მისამართი</div><div class="info-val">დავით აღმაშენებლის ხეივანი<br>თბილისი</div></div><div class="info-card reveal"><div class="info-icon">📞</div><div class="info-title">ტელეფონი</div><div class="info-val">+995 555 555 666</div></div></div></section>
+
+<footer><div class="fl">HUALING</div><ul class="flinks"><li><a href="#about">ჩვენ შესახებ</a></li><li><a href="#directory">მაღაზიები</a></li><li><a href="https://hualing.ge/" target="_blank">hualing.ge</a></li></ul><p class="fc">© 2024 Hualing Shopping Center. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

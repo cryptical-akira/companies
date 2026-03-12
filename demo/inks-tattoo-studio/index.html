@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inks Tattoo Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;500;600;700;800&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0A0808;--dark:#141010;--card:#1C1616;--red:#CC2222;--red-dark:#991818;--cream:#F0E8E0;--muted:#7A6860;--line:rgba(204,34,34,.1)}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--red);color:white;padding:5px 40px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(10,8,8,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);text-decoration:none;letter-spacing:5px}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--cream);font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--red)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:2px;background:var(--cream)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(204,34,34,.06),transparent 50%)}
+.ink-splash{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(204,34,34,.04),transparent 70%);filter:blur(40px)}
+.ink-splash:nth-child(1){top:10%;left:10%}.ink-splash:nth-child(2){bottom:20%;right:10%}
+.hero-content{z-index:2}.hero-tag{font-family:'Bebas Neue';font-size:1rem;letter-spacing:8px;color:var(--red);margin-bottom:2rem}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,10rem);letter-spacing:8px;line-height:.85;margin-bottom:.5rem}
+.hero .sub{font-size:.8rem;letter-spacing:6px;font-weight:300;color:var(--muted);margin-bottom:2rem}
+.hero p{color:var(--muted);max-width:450px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.hero-followers{font-size:.8rem;color:var(--red);letter-spacing:3px;margin-bottom:1.5rem}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;transition:all .4s}
+.btn-red{background:var(--red);color:white;border:2px solid var(--red)}.btn-red:hover{background:transparent;color:var(--red)}
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-family:'Bebas Neue';font-size:1rem;letter-spacing:5px;color:var(--red);margin-bottom:.5rem}.st{font-family:'Bebas Neue';font-size:clamp(2rem,5vw,3.5rem);letter-spacing:3px;margin-bottom:1rem}.sln{width:60px;height:3px;background:var(--red);margin:0 auto}
+.studio{background:var(--dark)}.studio-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.studio-visual{aspect-ratio:1;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:4rem}
+.studio-text h2{font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1.5rem}
+.studio-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-weight:300}
+.artists{background:var(--black)}.artist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:900px;margin:0 auto}
+.artist-card{text-align:center;padding:2rem;background:var(--card);border:1px solid var(--line)}
+.artist-av{width:100px;height:100px;margin:0 auto 1.5rem;background:var(--red-dark);display:flex;align-items:center;justify-content:center;font-size:2.5rem;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.artist-name{font-family:'Bebas Neue';font-size:1.2rem;letter-spacing:2px;margin-bottom:.3rem}.artist-spec{font-size:.75rem;color:var(--red);letter-spacing:1px}
+.styles{background:var(--dark)}.style-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
+.style-card{background:var(--card);border:1px solid var(--line);padding:2rem;text-align:center;transition:all .4s}.style-card:hover{border-color:var(--red)}
+.style-icon{font-size:1.5rem;margin-bottom:1rem}.style-name{font-family:'Bebas Neue';font-size:1.1rem;letter-spacing:2px;margin-bottom:.5rem}.style-desc{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300}
+.portfolio{background:var(--black)}.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:900px;margin:0 auto}
+.port-item{aspect-ratio:1;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:2rem;transition:all .3s;cursor:pointer}.port-item:hover{border-color:var(--red);transform:scale(1.02)}
+.booking{background:var(--dark);text-align:center;padding:5rem 5%}
+.booking h2{font-family:'Bebas Neue';font-size:3rem;letter-spacing:3px;margin-bottom:1rem}.booking p{color:var(--muted);margin-bottom:2rem}
+.bi-grid{display:flex;justify-content:center;gap:3rem;margin-top:2rem}.bi{text-align:center}.bi-icon{font-size:1.2rem;margin-bottom:.3rem}.bi-val{font-size:.9rem;color:var(--red)}.bi-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+footer{background:var(--black);padding:3rem 5%;text-align:center;border-top:1px solid var(--line)}
+.fl{font-family:'Bebas Neue';font-size:1.5rem;color:var(--red);letter-spacing:5px;margin-bottom:1rem}
+.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}.flinks a{color:var(--muted);text-decoration:none;font-size:.8rem}.flinks a:hover{color:var(--red)}.fc{font-size:.7rem;color:rgba(204,34,34,.15)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}.studio-grid{grid-template-columns:1fr}.artist-grid{grid-template-columns:1fr}.port-grid{grid-template-columns:1fr 1fr}.bi-grid{flex-direction:column;gap:1.5rem}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">INKS</a><ul class="nav-links"><li><a href="#studio">სტუდია</a></li><li><a href="#styles">სტილები</a></li><li><a href="#portfolio">პორტფოლიო</a></li><li><a href="#booking">ჩაწერა</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="ink-splash"></div><div class="ink-splash"></div><div class="hero-content"><p class="hero-tag">TATTOO STUDIO</p><h1>INKS</h1><p class="sub">T A T T O O &nbsp; S T U D I O</p><p class="hero-followers">11K+ FOLLOWERS</p><p>მელნის ხელოვნება. Inks Tattoo Studio — სადაც შენი იდეა ხდება მუდმივი ნამუშევარი.</p><a href="#booking" class="btn btn-red">ჩაეწერე</a></div></section>
+
+<section class="studio" id="studio"><div class="studio-grid"><div class="studio-visual reveal">🖋</div><div class="studio-text reveal"><h2>INKS STUDIO</h2><p>Inks Tattoo Studio — თბილისის ერთ-ერთი ყველაზე პოპულარული ტატუ სტუდია 11,000-ზე მეტი მიმდევრით. ჩვენი არტისტები ქმნიან უნიკალურ ნამუშევრებს ყველა სტილში.</p><p>სრული სტერილურობა, უმაღლესი ხარისხის მელნები და ინდივიდუალური მიდგომა — ეს არის Inks.</p></div></div></section>
+
+<section class="artists"><div class="sh"><p class="sl">ARTISTS</p><h2 class="st">ჩვენი არტისტები</h2><div class="sln"></div></div><div class="artist-grid"><div class="artist-card reveal"><div class="artist-av">🎨</div><div class="artist-name">INK MASTER</div><div class="artist-spec">Realism</div></div><div class="artist-card reveal"><div class="artist-av">✒️</div><div class="artist-name">SHADOW</div><div class="artist-spec">Blackwork</div></div><div class="artist-card reveal"><div class="artist-av">🖌</div><div class="artist-name">KISS</div><div class="artist-spec">Color</div></div></div></section>
+
+<section class="styles" id="styles"><div class="sh"><p class="sl">STYLES</p><h2 class="st">ტატუს სტილები</h2><div class="sln"></div></div><div class="style-grid"><div class="style-card reveal"><div class="style-icon">🖤</div><div class="style-name">REALISM</div><div class="style-desc">ფოტორეალისტური ტატუები.</div></div><div class="style-card reveal"><div class="style-icon">◼️</div><div class="style-name">BLACKWORK</div><div class="style-desc">შავი მელნის ნამუშევრები.</div></div><div class="style-card reveal"><div class="style-icon">🎨</div><div class="style-name">COLOR</div><div class="style-desc">ფერადი, ნათელი ტატუები.</div></div><div class="style-card reveal"><div class="style-icon">🌸</div><div class="style-name">JAPANESE</div><div class="style-desc">იაპონური ტრადიციული სტილი.</div></div><div class="style-card reveal"><div class="style-icon">✍️</div><div class="style-name">LETTERING</div><div class="style-desc">კალიგრაფია და წარწერები.</div></div></div></section>
+
+<section class="portfolio" id="portfolio"><div class="sh"><p class="sl">WORKS</p><h2 class="st">პორტფოლიო</h2><div class="sln"></div></div><div class="port-grid"><div class="port-item reveal">🐉</div><div class="port-item reveal">🌹</div><div class="port-item reveal">💀</div><div class="port-item reveal">🦅</div><div class="port-item reveal">🗡</div><div class="port-item reveal">🌊</div></div></section>
+
+<section class="booking" id="booking"><h2 class="reveal">BOOK A SESSION</h2><p class="reveal">დაგვიკავშირდით კონსულტაციისთვის</p><a href="https://www.instagram.com/tattoo_studio_ink_kiss/" target="_blank" class="btn btn-red reveal">@tattoo_studio_ink_kiss</a><div class="bi-grid reveal"><div class="bi"><div class="bi-icon">📍</div><div class="bi-lbl">სტუდია</div><div class="bi-val">თბილისი</div></div><div class="bi"><div class="bi-icon">📱</div><div class="bi-lbl">Instagram</div><div class="bi-val">11K+ followers</div></div><div class="bi"><div class="bi-icon">📞</div><div class="bi-lbl">ტელეფონი</div><div class="bi-val">+995 555 222 333</div></div></div></section>
+
+<footer><div class="fl">INKS</div><ul class="flinks"><li><a href="#studio">სტუდია</a></li><li><a href="#portfolio">პორტფოლიო</a></li><li><a href="https://www.instagram.com/tattoo_studio_ink_kiss/" target="_blank">Instagram</a></li></ul><p class="fc">© 2024 Inks Tattoo Studio. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

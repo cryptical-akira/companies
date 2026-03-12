@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheki Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0A0A0A;--dark:#131313;--card:#1A1A1A;--warm:#C8A882;--accent:#E8C8A8;--cream:#F0EBE3;--muted:#6B6560;--line:rgba(200,168,130,.1)}
+html{scroll-behavior:smooth}body{font-family:'Outfit','Noto Sans Georgian',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden}
+.demo-badge{position:fixed;top:20px;right:-35px;background:var(--warm);color:var(--black);padding:5px 40px;font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transform:rotate(45deg);z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;padding:1.2rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--cream);text-decoration:none;letter-spacing:4px;text-transform:lowercase}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:300;letter-spacing:1px;text-transform:lowercase;transition:color .3s}.nav-links a:hover{color:var(--warm)}
+.mt{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}.mt span{width:25px;height:1px;background:var(--cream)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(200,168,130,.04),transparent 60%)}
+.hero-content{z-index:2}.hero-tag{font-size:.7rem;letter-spacing:8px;color:var(--warm);margin-bottom:2rem;font-weight:300;text-transform:lowercase}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;letter-spacing:5px;line-height:1.1;margin-bottom:.5rem;text-transform:lowercase}
+.hero h1 .em{font-style:italic;color:var(--warm)}
+.hero p{color:var(--muted);max-width:400px;margin:1.5rem auto 2.5rem;line-height:2;font-weight:300;font-size:.9rem}
+.btn{display:inline-block;padding:1rem 2.5rem;text-decoration:none;font-size:.75rem;font-weight:400;letter-spacing:3px;text-transform:lowercase;transition:all .4s}
+.btn-warm{border:1px solid var(--warm);color:var(--warm)}.btn-warm:hover{background:var(--warm);color:var(--black)}
+section{padding:6rem 5%}
+.sh{text-align:center;margin-bottom:4rem}.sl{font-size:.65rem;letter-spacing:6px;color:var(--warm);margin-bottom:.5rem;font-weight:300;text-transform:lowercase}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:1rem;letter-spacing:2px;text-transform:lowercase}
+.sln{width:30px;height:1px;background:var(--warm);margin:0 auto}
+.about{background:var(--dark)}.about-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:350px 1fr;gap:4rem;align-items:center}
+.about-photo{aspect-ratio:3/4;background:linear-gradient(135deg,var(--card),#222);display:flex;align-items:center;justify-content:center;font-size:4rem;border:1px solid var(--line)}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:1.5rem;letter-spacing:1px}
+.about-text p{color:var(--muted);line-height:2;margin-bottom:1rem;font-weight:300;font-size:.9rem}
+.services{background:var(--black)}.serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
+.serv-card{background:var(--card);border:1px solid var(--line);padding:2rem;text-align:center;transition:all .4s}
+.serv-card:hover{border-color:var(--warm)}
+.serv-icon{font-size:1.5rem;margin-bottom:1rem}.serv-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:.5rem;letter-spacing:1px}
+.serv-desc{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300}
+.portfolio{background:var(--dark)}.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:0 auto}
+.port-item{aspect-ratio:3/2;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.port-item:hover{border-color:var(--warm);transform:scale(1.02)}
+.port-item:nth-child(1){background:linear-gradient(135deg,#1A1815,#252220)}.port-item:nth-child(2){background:linear-gradient(135deg,#181A15,#202520)}
+.port-item:nth-child(3){background:linear-gradient(135deg,#15181A,#202225)}.port-item:nth-child(4){background:linear-gradient(135deg,#1A1518,#252022)}
+.port-item:nth-child(5){background:linear-gradient(135deg,#181518,#222025)}.port-item:nth-child(6){background:linear-gradient(135deg,#181A18,#222522)}
+.port-item .icon{font-size:1.5rem;opacity:.3}
+.testimonials{background:var(--black)}.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.test-card{padding:2rem;background:var(--card);border:1px solid var(--line);position:relative}
+.test-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--warm);opacity:.3;position:absolute;top:10px;left:15px}
+.test-text{font-size:.85rem;color:var(--muted);line-height:1.8;font-weight:300;font-style:italic;margin-bottom:1rem;padding-top:1.5rem}
+.test-name{font-size:.8rem;font-weight:500;color:var(--cream)}.test-type{font-size:.7rem;color:var(--warm);letter-spacing:1px}
+.booking{background:var(--dark);text-align:center;padding:5rem 5%}
+.booking h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;margin-bottom:1rem;letter-spacing:1px;text-transform:lowercase}
+.booking p{color:var(--muted);margin-bottom:2rem;font-weight:300}
+.bi-grid{display:flex;justify-content:center;gap:3rem;margin-top:2rem}.bi{text-align:center}.bi-icon{font-size:1rem;margin-bottom:.3rem;opacity:.5}
+.bi-val{font-size:.85rem;color:var(--warm)}.bi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+footer{background:var(--black);padding:3rem 5%;text-align:center;border-top:1px solid var(--line)}
+.fl{font-family:'Cormorant Garamond',serif;font-size:1.2rem;letter-spacing:4px;margin-bottom:1rem;font-weight:300;text-transform:lowercase;color:var(--warm)}
+.flinks{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.5rem}.flinks a{color:var(--muted);text-decoration:none;font-size:.8rem;font-weight:300}.flinks a:hover{color:var(--warm)}.fc{font-size:.7rem;color:rgba(200,168,130,.15)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.mt{display:flex}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black);padding:2rem 5%}.about-grid{grid-template-columns:1fr}.port-grid,.test-grid{grid-template-columns:1fr}.bi-grid{flex-direction:column;gap:1.5rem}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO</div>
+<nav><a href="#" class="nav-logo">cheki</a><ul class="nav-links"><li><a href="#about">შესახებ</a></li><li><a href="#services">სერვისები</a></li><li><a href="#portfolio">პორტფოლიო</a></li><li><a href="#booking">კონტაქტი</a></li></ul><button class="mt" onclick="document.querySelector('.nav-links').classList.toggle('active')"><span></span><span></span><span></span></button></nav>
+
+<section class="hero"><div class="hero-content"><p class="hero-tag">photography • tbilisi</p><h1>cheki<br><span class="em">photography</span></h1><p>მომენტები, რომლებიც სამუდამოა. Cheki Photography — სადაც ყოველი კადრი მოგვითხრობს ისტორიას.</p><a href="#booking" class="btn btn-warm">დამიკავშირდი</a></div></section>
+
+<section class="about" id="about"><div class="about-grid"><div class="about-photo reveal">📷</div><div class="about-text reveal"><h2>ყოველი კადრის მიღმა ისტორიაა</h2><p>Cheki Photography — თბილისელი ფოტოგრაფი, რომელიც სპეციალიზირებულია ქორწილების, პორტრეტების, კომერციული და ივენთ ფოტოგრაფიაში.</p><p>ჩემი მიზანია ყოველი მომენტის ემოცია გადმოვცე ფოტოში — ბუნებრივად, ლამაზად და დაუვიწყრად. ყოველი პროექტი ინდივიდუალურია.</p></div></div></section>
+
+<section class="services" id="services"><div class="sh"><p class="sl">სერვისები</p><h2 class="st">რას გთავაზობთ</h2><div class="sln"></div></div><div class="serv-grid"><div class="serv-card reveal"><div class="serv-icon">💒</div><div class="serv-name">ქორწილი</div><div class="serv-desc">ქორწილის სრული ფოტო და ვიდეო გადაღება.</div></div><div class="serv-card reveal"><div class="serv-icon">👤</div><div class="serv-name">პორტრეტი</div><div class="serv-desc">ინდივიდუალური და ოჯახური პორტრეტები.</div></div><div class="serv-card reveal"><div class="serv-icon">🏢</div><div class="serv-name">კომერციული</div><div class="serv-desc">პროდუქტის, ბრენდის და კორპორატიული ფოტოგრაფია.</div></div><div class="serv-card reveal"><div class="serv-icon">🎉</div><div class="serv-name">ივენთი</div><div class="serv-desc">წვეულებების, კონფერენციების და ღონისძიებების გადაღება.</div></div></div></section>
+
+<section class="portfolio" id="portfolio"><div class="sh"><p class="sl">ნამუშევრები</p><h2 class="st">პორტფოლიო</h2><div class="sln"></div></div><div class="port-grid"><div class="port-item reveal"><span class="icon">📸</span></div><div class="port-item reveal"><span class="icon">💒</span></div><div class="port-item reveal"><span class="icon">👤</span></div><div class="port-item reveal"><span class="icon">🌅</span></div><div class="port-item reveal"><span class="icon">🎉</span></div><div class="port-item reveal"><span class="icon">🏙</span></div></div></section>
+
+<section class="testimonials"><div class="sh"><p class="sl">მიმოხილვები</p><h2 class="st">კლიენტების აზრი</h2><div class="sln"></div></div><div class="test-grid"><div class="test-card reveal"><div class="test-text">ჩეკიმ ჩვენი ქორწილი გადაიღო ისე, რომ ყოველი ფოტო ემოციებით არის სავსე. საუკეთესო ფოტოგრაფი!</div><div class="test-name">ანა & გიორგი</div><div class="test-type">ქორწილი</div></div><div class="test-card reveal"><div class="test-text">პროფესიონალური, პუნქტუალური და კრეატიული. ბიზნესის ფოტოსესია ბრწყინვალედ წარიმართა.</div><div class="test-name">ნინო კ.</div><div class="test-type">კომერციული</div></div><div class="test-card reveal"><div class="test-text">ოჯახური ფოტოსესია ისე ბუნებრივად გადაიღო, თითქოს კამერა იქ არც იყო. მადლობა!</div><div class="test-name">თამარ მ.</div><div class="test-type">პორტრეტი</div></div></div></section>
+
+<section class="booking" id="booking"><h2 class="reveal">დამიკავშირდი</h2><p class="reveal">მოდი განვიხილოთ შენი პროექტი</p><a href="https://www.instagram.com/cheki_photography/" target="_blank" class="btn btn-warm reveal">@cheki_photography</a><div class="bi-grid reveal"><div class="bi"><div class="bi-icon">📍</div><div class="bi-lbl">ლოკაცია</div><div class="bi-val">თბილისი, საქართველო</div></div><div class="bi"><div class="bi-icon">📱</div><div class="bi-lbl">Instagram</div><div class="bi-val">@cheki_photography</div></div><div class="bi"><div class="bi-icon">📞</div><div class="bi-lbl">ტელეფონი</div><div class="bi-val">+995 555 666 777</div></div></div></section>
+
+<footer><div class="fl">cheki photography</div><ul class="flinks"><li><a href="#about">შესახებ</a></li><li><a href="#portfolio">პორტფოლიო</a></li><li><a href="https://www.instagram.com/cheki_photography/" target="_blank">Instagram</a></li></ul><p class="fc">© 2024 Cheki Photography. Tbilisi. | Demo Version</p></footer>
+<script>window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>
