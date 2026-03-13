@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://ems-voters.cec.gov.ge/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ამომრჩეველთა სიის გადამოწმება</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./site.css">
+    <link rel="stylesheet" href="./Voters.styles.css">
+<script src="./main.js.download"></script><script type="text/javascript" charset="UTF-8" src="./common.js.download"></script><script type="text/javascript" charset="UTF-8" src="./util.js.download"></script></head>
+<body cz-shortcut-listen="true">
+    <header b-zpaoqkyxow="">
+    </header>
+    <div b-zpaoqkyxow="" class="container">
+        <main b-zpaoqkyxow="" role="main" class="pb-3">
+            
+<div class="container">
+    <div class="row">
+        <section class="voter-verification">
+        <div class="verification-container">
+            <div class="container-fluid d-flex align-items-center justify-content-center">
+                <div class="col-md-8">
+                    <div class="row justify-content-center">
+                        <img loading="lazy" src="./cec.png" class="logo" alt="Voter Logo">
+                    </div>
+                    <div class="row">
+                        <h1 class="main-title">გადაამოწმეთ პირადი მონაცემები და მისამართი ამომრჩეველთა ერთიან სიაში</h1>
+                    </div>
+                    <div class="row">
+                        <p class="subtitle">ვებგვერდი განკუთვნილია მხოლოდ ამომრჩეველთათვის - საკუთარი და ოჯახის წევრების მონაცემების გადასამოწმებლად!</p>
+                        <p class="date-info">(01.02.2026 მდგომარეობით)</p>
+                    </div>
+            
+                    <form id="voterForm" method="post" action="https://ems-voters.cec.gov.ge/">
+                        <div class="row">
+                            <label for="PersonalId" class="visually-hidden">პირადი ნომერი</label>
+                            <input autocomplete="off" type="text" onkeypress="return isNumberKey(event)" id="PersonalId" name="PersonalId" class="input-field" placeholder="პირადი ნომერი" aria-label="პირადი ნომერი" maxlength="11" required="">
+                        </div>
+                        <div class="row">
+                            <label for="Surname" class="visually-hidden">გვარი</label>
+                            <input autocomplete="off" type="text" onkeypress="return isSurname(event)" id="Surname" name="Surname" class="input-field" placeholder="გვარი" aria-label="გვარი" required="">
+                        </div>
+                        <div class="row" style="margin-top: 15px;">
+                            <div id="turnstile-widget" class="cf-turnstile" data-sitekey="0x4AAAAAABjO7MVXIvwcCXEP" data-size="flexible" data-theme="light" data-appearance="interactive" data-feedback-enabled="false"><div><template shadowrootmode="closed"><iframe src="https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/ov2/av0/rch/dhvtt/0x4AAAAAABjO7MVXIvwcCXEP/light/fbD/auto_timeout/flexible?lang=auto" allow="cross-origin-isolated; fullscreen; autoplay; keyboard-map" sandbox="allow-same-origin allow-scripts allow-popups" id="cf-chl-widget-dhvtt" tabindex="0" title="Widget containing a Cloudflare security challenge" style="border: none; overflow: hidden; width: 100%; max-width: 100vw; min-width: 300px; height: 65px;"></iframe></template><input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-dhvtt_response" value=""></div></div>
+                        </div>
+                        <button type="submit" class="search-button"><span id="loader" style="display: none;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ძებნა</button>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8DnJUuD0LFJMgWilhCwnWeXNMcxGACsFAVbdOs9B_PVLejvMY8qXqecetljM2n114RoQvBmhQZHeHzYMLcG0GsQWOgWktS0QxPuRjM2-jCDeRHxNGyyYVcmyemkdMHWkrWRFb5OCFHC1wo9YYlP-9-c"></form>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <div id="voterInfo" class="dynamic-content">
+    <div class="row">
+    <section>
+        <table class="table-responsive table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th class="header" style="width: 70%;">სურათი</th>
+                    <th class="header" style="width: 90%;">გვარი</th>
+                    <th class="header" style="width: 50%;">სახელი</th>
+                    <th class="header" style="width: 60%;">დაბ.თარიღი</th>
+                    <th class="header" style="width: 70%;">ოლქი/უბანი</th>
+                    <th class="header" style="width: 120%;">მისამართი</th>
+                    <th class="header" style="width: 120%;">ფაქტობრივი საცხოვრებელი ადგილი</th>
+                    <th class="header">ფაქტობრივი მდგომარეობა</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="data:image/jpeg;base64,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">
+                    </td><td>
+ჩალაძე                            <br>
+                    </td>
+                    <td>
+რეზიკო                            <br>
+                    </td>
+                    <td>29.05.2004</td>
+                    <td>
+                            <span style="color: #009766;">ელექტრონული</span><br>
+                        <button class="map-button open-modal-button">03.60</button>
+                    </td>
+                    <td>
+თბილისი   მისამართის გარეშე                             <br>
+                    </td>
+                    <td>
+თბილისი ვიქტორ დოლიძის ქ. კორ. 27 ბ. 66                             <br>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="container-fluid d-flex align-items-center justify-content-center">
+            <div class="row">
+                <button onclick="toggle()" class="more-button">
+                    ამ მისამართზე რეგისტრირებულ ამომრჩეველთა სია
+                    <span style="margin-left: 20px;">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.2939 13.2075H13.3905L13.0703 12.8834C14.191 11.5146 14.8656 9.73756 14.8656 7.80446C14.8656 3.494 11.538 0 7.43282 0C3.32762 0 0 3.494 0 7.80446C0 12.1149 3.32762 15.6089 7.43282 15.6089C9.27387 15.6089 10.9663 14.9005 12.2699 13.7238L12.5786 14.06V15.0086L18.2962 21L20 19.211L14.2939 13.2075ZM7.43282 13.2075C4.58548 13.2075 2.28702 10.7942 2.28702 7.80446C2.28702 4.81475 4.58548 2.40137 7.43282 2.40137C10.2802 2.40137 12.5786 4.81475 12.5786 7.80446C12.5786 10.7942 10.2802 13.2075 7.43282 13.2075Z" fill="white"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </section>
+    </div>
+    <br>
+    <div id="others" class="row" style="display: none;">
+        <section>
+            <table class="table-responsive table-bordered table-striped custom-table">
+            <thead>
+                <tr>
+                    <th class="header" style="width: 90%;">გვარი</th>
+                    <th class="header" style="width: 50%;">სახელი</th>
+                    <th class="header" style="width: 60%;">დაბ.თარიღი</th>
+                    <th class="header" style="width: 70%;">ოლქი/უბანი</th>
+                    <th class="header" style="width: 120%;">მისამართი</th>
+                    <th class="header" style="width: 120%;">ფაქტობრივი საცხოვრებელი ადგილი</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        </section>
+    </div>
+    <script>
+
+        $('#mapModalLabel').html("N61 &#x10E1;&#x10D0;&#x10EF;&#x10D0;&#x10E0;&#x10DD; &#x10E1;&#x10D9;&#x10DD;&#x10DA;&#x10D0; / &#x10D5;. &#x10D3;&#x10DD;&#x10DA;&#x10D8;&#x10EB;&#x10D8;&#x10E1; &#x10E5;. &#x2116;3, I &#x10E1;&#x10D0;&#x10E0;&#x10D7;.")
+
+        $(document).on('click', '.open-modal-button', function () {
+            $('#mapModal').modal('show');
+            initMap(); // Initialize the map when the modal opens
+        });
+
+        $(document).on('click', '.close', function() {
+            $('#mapModal').modal('hide');
+        });
+
+        function initMap() {
+            const mapOptions = {
+                center: { lat: 41.717858, lng: 44.776791 },
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var infowindow = new google.maps.InfoWindow({
+                content: "N61 &#x10E1;&#x10D0;&#x10EF;&#x10D0;&#x10E0;&#x10DD; &#x10E1;&#x10D9;&#x10DD;&#x10DA;&#x10D0; / &#x10D5;. &#x10D3;&#x10DD;&#x10DA;&#x10D8;&#x10EB;&#x10D8;&#x10E1; &#x10E5;. &#x2116;3, I &#x10E1;&#x10D0;&#x10E0;&#x10D7;."
+            });
+            
+            var image = '/img/election-icon.png';
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(41.717858, 44.776791),
+                title:"N61 &#x10E1;&#x10D0;&#x10EF;&#x10D0;&#x10E0;&#x10DD; &#x10E1;&#x10D9;&#x10DD;&#x10DA;&#x10D0; / &#x10D5;. &#x10D3;&#x10DD;&#x10DA;&#x10D8;&#x10EB;&#x10D8;&#x10E1; &#x10E5;. &#x2116;3, I &#x10E1;&#x10D0;&#x10E0;&#x10D7;.",
+                icon: image
+            });
+            marker.setMap(map);                                 
+            infowindow.open(map, marker);
+        }
+    </script>
+</div>
+    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mapModalLabel">N61 საჯარო სკოლა / ვ. დოლიძის ქ. №3, I სართ.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Map Container -->
+                    <div id="map" style="width: 100%; height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+
+    <footer b-zpaoqkyxow="" class="border-top footer text-muted">
+        <div b-zpaoqkyxow="" class="container">
+           <label b-zpaoqkyxow="" style="font-family: &#39;DejaVu Sans&#39; !important;font-weight: normal;font-style: normal;">© საქართველოს საარჩევნო ადმინისტრაცია</label>
+        </div>
+    </footer>
+    <script src="./jquery.min.js.download"></script>
+    <script src="./bootstrap.bundle.min.js.download"></script>
+    <script src="./site.js.download"></script>
+    <script src="./geo.js.download"></script>
+    <script src="./api.js.download"></script>
+    <script src="./js"></script>
+    
+    <script>
+        function gmNoop() { console.log('GMap Callback') }
+
+        function isNumberKey(evt)
+        {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode > 31 
+                && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+        function isSurname(evt){
+            var regex = new RegExp("^[\u10A0-\u10FF\u0530-\u058FA-Za-zƏəĞğİıÖöŞşÜüÇç .,!?;:'-]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        function toggle() {
+            var x = document.getElementById("others");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function resetTurnstile() {
+            // Check if the turnstile object and the reset function are available
+            if (typeof turnstile !== 'undefined' && typeof turnstile.reset === 'function') {
+                // Use the ID you added in Step 1
+                turnstile.reset('#turnstile-widget');
+            } else {
+                console.error('Turnstile script not loaded or reset function not available.');
+            }
+        }
+       
+        $(document).ready(function () {
+            $('#voterForm').submit(function (event) {
+                event.preventDefault(); // Prevent default form submission
+                $('#loader').show();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/GetVoterInfo', // AJAX request to the GetVoterInfo action
+                    data: $(this).serialize(), // Serialize form data
+                    success: function (response) {
+                        document.getElementById("voterForm").reset();
+                        $('#voterInfo').html(response); // Update the voterInfo div with the response HTML
+                    },
+                    error: function () {
+                        alert('There was an error processing your request.');
+                    },
+                    complete: function () {
+                    // Hide loader after completion of AJAX request
+                        $('#loader').hide();
+                        resetTurnstile();
+                    }
+                });
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dbda8fcfc6990e3',t:'MTc3MzQzMjM5Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
+
+</body></html>

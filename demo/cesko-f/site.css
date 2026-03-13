@@ -1,0 +1,362 @@
+html {
+  font-size: 14px;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.voter-verification {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  font-family: Karla, sans-serif;
+  color: #707070;
+  font-weight: 700;
+  text-align: center;
+  padding: 26px 80px 114px;
+}
+
+@media (max-width: 991px) {
+  .voter-verification {
+    padding: 26px 20px 100px;
+  }
+}
+
+.verification-container {
+  border-radius: 49px;
+  background-color: #eaf4f0;
+  display: flex;
+  width: 933px;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 23px 80px;
+  border: 2px solid #019766;
+}
+
+@media (max-width: 991px) {
+  .verification-container {
+    padding: 23px 20px;
+    border: none;
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  width: 574px;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  aspect-ratio: 2.4;
+  object-fit: contain;
+  object-position: center;
+  width: 190px;
+  max-width: 100%;
+}
+
+.main-title {
+  color: #51ba78;
+  font-size: 19px;
+  line-height: 28px;
+  margin-top: 18px;
+}
+
+@media (max-width: 991px) {
+  .main-title {
+    max-width: 100%;
+  }
+}
+
+.subtitle {
+  color: #bd0000;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 28px;
+  margin-top: 12px;
+}
+
+@media (max-width: 991px) {
+  .subtitle {
+    max-width: 100%;
+  }
+}
+
+.date-info {
+  color: #000;
+  font-size: 15px;
+  line-height: 2;
+  margin-top: 26px;
+}
+
+.input-field {
+  border-radius: 15px;
+  background-color: #fff;
+  align-self: stretch;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+  padding: 17px 57px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  align-content: center;
+  text-align: center;
+}
+
+.input-field:focus {
+  border: 1.53px solid #51BA78; /* Change to your desired color */
+  outline: none; /* Remove default outline */
+}
+
+@media (max-width: 991px) {
+  .input-field {
+    max-width: 100%;
+    padding: 17px 20px;
+  }
+}
+
+.captcha-container {
+  border-radius: 15px;
+  background-color: #fff;
+  display: flex;
+  margin-top: 53px;
+  width: 418px;
+  max-width: 100%;
+  gap: 40px 58px;
+  font-size: 18px;
+  line-height: 2;
+  padding: 18px 34px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991px) {
+  .captcha-container {
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+}
+
+.captcha-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 26px;
+  border-radius: 0;
+}
+
+.captcha-text {
+  flex-grow: 1;
+  width: 259px;
+  flex-basis: auto;
+}
+
+.search-button {
+  border-radius: 14px;
+  background-color: rgba(76, 187, 120, 0.62);
+  margin-top: 15px;
+  width: auto;
+  max-width: 100%;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 2;
+  padding: 12px 70px;
+  border: none;
+  cursor: pointer;
+}
+
+.map-button {
+  border-radius: 14px;
+  background-color: rgba(76, 187, 120);
+  margin-top: 15px;
+  width: auto;
+  max-width: 80%;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 2;
+  padding: 12px 20px;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+
+.search-button:hover {
+  background-color: #4CBB78;
+}
+
+@media (max-width: 991px) {
+  .search-button {
+    padding: 12px 70px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.custom-table {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  border-radius: 23px;
+  background-color: #EAF4F0;
+  border: 2px solid #D7D8D9;
+  outline: 2px solid #019766;
+  overflow: hidden;
+  margin: -1px;
+}
+
+.custom-table th, .custom-table td {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+thead tr {
+  background-color: #4CBB78;
+  color: white;
+}
+
+.more-button {
+  border-radius: 14px;
+  background-color: #4CBB78;
+  margin-top: 15px;
+  width: auto;
+  max-width: 100%;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 2;
+  padding: 12px 70px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Make the modal dialog box rounded and remove margins */
+.modal-dialog {
+  margin: auto; /* Remove default margin */
+  max-width: 40%; /* Make modal take full screen width (or customize as needed) */
+  border-radius: 30px; /* Rounded corners */
+}
+
+/* Optional: Center modal content on the screen without default Bootstrap margins */
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full screen height */
+}
+
+/* Optional: Add a custom shadow to make it look lifted */
+.modal-content {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  margin: 0;
+  border-radius: 30px; /* Rounded corners */
+}
+
+.modal-header{
+  background-color: #009766;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  color: white;
+}
+
+.modal-body{
+  padding: 0;
+}
+
+.close{
+  color: #009766;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+}
+
+.modal-title{
+  font-size: 1rem;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  table-layout: fixed;
+}
+
+th, td {
+  word-wrap: break-word;
+  width: 100%;
+}
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+      background-color: #EAF4F0;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			position: relative;
+			padding-left: 0%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+    .modal-dialog {
+      margin: auto; /* Remove default margin */
+      max-width: 90%; /* Make modal take full screen width (or customize as needed) */
+      border-radius: 30px; /* Rounded corners */
+    }
+	}
